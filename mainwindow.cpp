@@ -8,16 +8,31 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     connections();
+    settingScreenUI();
 
-    //Setting up UI
-    ui->btnMonkey->setStyleSheet("height:50px;""width:50px;""background-color: white;""border: 4px solid transparent;""border-radius: 25px;");
-    ui->btnDog->setStyleSheet("height:50px;""width:50px;""background-color: white;""border: 4px solid transparent;""border-radius: 25px;");
-    ui->btnRabbit->setStyleSheet("height:50px;""width:50px;""background-color: white;""border: 4px solid transparent;""border-radius: 25px;");
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::settingScreenUI(){
+    // Animal Mode Button Clicked
+    ui->btnMonkey->setStyleSheet("height:50px;""width:50px;""background-color: white;""border: 4px solid transparent;""border-radius: 25px;");
+    ui->btnDog->setStyleSheet("height:50px;""width:50px;""background-color: white;""border: 4px solid transparent;""border-radius: 25px;");
+    ui->btnRabbit->setStyleSheet("height:50px;""width:50px;""background-color: white;""border: 4px solid transparent;""border-radius: 25px;");
+
+    // Setting to Centralwidget
+    ui->setContainerLeft->setParent(ui->centralwidget);
+    ui->setContainerRight->setParent(ui->centralwidget);
+    ui->translateChinese->setParent(ui->centralwidget);
+    ui->translateEnglish->setParent(ui->centralwidget);
+    ui->hanziContainerLeft->setParent(ui->centralwidget);
+    ui->hanziContainerRight->setParent(ui->centralwidget);
+    ui->labelContainerLeft->setParent(ui->centralwidget);
+    ui->labelContainerRight->setParent(ui->centralwidget);
+
 }
 
 void MainWindow::connections(){

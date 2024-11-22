@@ -18,6 +18,7 @@ public:
     ~MainWindow();
 
     void connections();
+    void settingScreenUI();
 
 private slots:
     void switchToRabbit();

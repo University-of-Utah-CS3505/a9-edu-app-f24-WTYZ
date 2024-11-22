@@ -12,6 +12,7 @@
         <file>guideLine_run_tiao.tiff</file>
         <file>guideLine_swing_dang.tiff</file>
         <file>strokeGuideBox.png</file>
+        <file>labelContainer.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>dogBark.mp3</file>
