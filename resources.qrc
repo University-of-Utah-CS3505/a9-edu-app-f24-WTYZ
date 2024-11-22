@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>btn_dog.png</file>
+        <file>btn_monkey.png</file>
+        <file>btn_rabbit.png</file>
+        <file>btn_sound.png</file>
+        <file>btn_tutorial.png</file>
+        <file>guideLine_dog_gou.tiff</file>
+        <file>guideline_monkey_hou.tiff</file>
+        <file>guideLine_rabbit_tu.tiff</file>
+        <file>guideLine_run_pao.tiff</file>
+        <file>guideLine_run_tiao.tiff</file>
+        <file>guideLine_swing_dang.tiff</file>
+        <file>strokeGuideBox.png</file>
+    </qresource>
+    <qresource prefix="/sounds">
+        <file>dogBark.mp3</file>
+        <file>dogRuns_gou_zai_pao.m4a</file>
+        <file>monkeySwings_hou_zai_dang.m4a</file>
+        <file>rabbitJumps_tu_zai_tiao.m4a</file>
+    </qresource>
+    <qresource prefix="/animations">
+        <file>gif_dog_gou.gif</file>
+        <file>gif_monkey_hou.gif</file>
+        <file>gif_rabbit_tu.gif</file>
+        <file>gif_run_pao.gif</file>
+        <file>gif_run_tiao.gif</file>
+        <file>gif_swing_dang.gif</file>
+    </qresource>
+</RCC>
