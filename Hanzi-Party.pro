@@ -55,6 +55,7 @@ SOURCES += \
     Box2D/Dynamics/b2World.cpp \
     Box2D/Dynamics/b2WorldCallbacks.cpp \
     Box2D/Rope/b2Rope.cpp \
+    helppage.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -106,9 +107,11 @@ HEADERS += \
     Box2D/Dynamics/b2World.h \
     Box2D/Dynamics/b2WorldCallbacks.h \
     Box2D/Rope/b2Rope.h \
+    helppage.h \
     mainwindow.h
 
 FORMS += \
+    helppage.ui \
     mainwindow.ui
 
 # Default rules for deployment.

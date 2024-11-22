@@ -6,30 +6,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>801</width>
+    <height>597</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="autoFillBackground">
-   <bool>false</bool>
-  </property>
-  <property name="styleSheet">
-   <string notr="true">background: black</string>
+   <bool>true</bool>
   </property>
   <property name="toolButtonStyle">
    <enum>Qt::ToolButtonStyle::ToolButtonIconOnly</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background:black;</string>
+   </property>
    <widget class="QStackedWidget" name="stackedWidgetBackground">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
       <width>801</width>
-      <height>481</height>
+      <height>501</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -118,9 +118,9 @@
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>30</y>
+        <y>20</y>
         <width>151</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
@@ -137,9 +137,9 @@
       <property name="geometry">
        <rect>
         <x>580</x>
-        <y>30</y>
-        <width>101</width>
-        <height>181</height>
+        <y>20</y>
+        <width>181</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -156,33 +156,13 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="translateEnglish">
-      <property name="geometry">
-       <rect>
-        <x>580</x>
-        <y>90</y>
-        <width>91</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-color: rgb(60, 60, 60);</string>
-      </property>
-      <property name="text">
-       <string>ENGLISH</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
-      </property>
-     </widget>
      <widget class="QLabel" name="setContainerLeft">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>30</y>
-        <width>91</width>
-        <height>181</height>
+        <x>70</x>
+        <y>20</y>
+        <width>181</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -203,9 +183,9 @@ background-color: rgba(255, 255, 255, 0.3);</string>
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>30</y>
+        <y>20</y>
         <width>151</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
@@ -216,26 +196,6 @@ background-color: rgba(255, 255, 255, 0.3);</string>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="translateChinese">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>90</y>
-        <width>91</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-color: rgb(60, 60, 60);</string>
-      </property>
-      <property name="text">
-       <string>CHINESE</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="labelHanziAnimal">
@@ -268,6 +228,68 @@ color: rgb(60, 60, 60);</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="translateChinese">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>20</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: rgb(60, 60, 60);</string>
+      </property>
+      <property name="text">
+       <string>CHINESE</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="translateEnglish">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>20</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: rgb(60, 60, 60);</string>
+      </property>
+      <property name="text">
+       <string>ENGLISH</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelSound">
+      <property name="geometry">
+       <rect>
+        <x>730</x>
+        <y>30</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/images/btn_sound.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -318,7 +340,7 @@ color: rgb(60, 60, 60);</string>
     <property name="geometry">
      <rect>
       <x>690</x>
-      <y>490</y>
+      <y>510</y>
       <width>100</width>
       <height>51</height>
      </rect>
@@ -344,7 +366,7 @@ color: rgb(60, 60, 60);</string>
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>490</y>
+      <y>510</y>
       <width>50</width>
       <height>50</height>
      </rect>
@@ -376,7 +398,7 @@ color: rgb(60, 60, 60);</string>
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>490</y>
+      <y>510</y>
       <width>50</width>
       <height>50</height>
      </rect>
@@ -408,7 +430,7 @@ color: rgb(60, 60, 60);</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>490</y>
+      <y>510</y>
       <width>50</width>
       <height>50</height>
      </rect>
@@ -445,7 +467,7 @@ color: rgb(60, 60, 60);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>801</width>
      <height>33</height>
     </rect>
    </property>

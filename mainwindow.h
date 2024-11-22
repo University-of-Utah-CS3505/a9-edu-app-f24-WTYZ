@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "helppage.h"
+
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -24,6 +26,7 @@ private slots:
     void switchToRabbit();
     void switchToMonkey();
     void switchToDog();
+    void showHelpPage();
 
 private:
     Ui::MainWindow *ui;

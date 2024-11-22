@@ -39,6 +39,7 @@ void MainWindow::connections(){
     connect(ui->btnRabbit, &QPushButton::clicked, this, &MainWindow::switchToRabbit);
     connect(ui->btnMonkey, &QPushButton::clicked, this, &MainWindow::switchToMonkey);
     connect(ui->btnDog, &QPushButton::clicked, this, &MainWindow::switchToDog);
+    connect(ui->helpButton, &QPushButton::clicked, this, &MainWindow::showHelpPage);
 }
 
 void MainWindow::switchToRabbit(){
@@ -58,4 +59,9 @@ void MainWindow::switchToMonkey(){
     ui->btnDog->setStyleSheet("height:50px;""width:50px;""background-color: white;""border: 4px solid transparent;""border-radius: 25px;");
     ui->btnMonkey->setStyleSheet("height:50px;""width:50px;""background-color: white;""border: 4px solid #25CE45;""border-radius: 25px;");
     ui->stackedWidgetBackground->setCurrentIndex(2);
+}
+
+void MainWindow::showHelpPage() {
+    HelpPage helpPage(this);
+    helpPage.exec();
 }
