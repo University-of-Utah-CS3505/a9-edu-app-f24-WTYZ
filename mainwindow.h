@@ -17,6 +17,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void connections();
+
+private slots:
+    void switchToRabbit();
+    void switchToMonkey();
+    void switchToDog();
+
 private:
     Ui::MainWindow *ui;
 };

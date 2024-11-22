@@ -27,4 +27,9 @@
         <file>gif_run_tiao.gif</file>
         <file>gif_swing_dang.gif</file>
     </qresource>
+    <qresource prefix="/background">
+        <file>bg_dog.png</file>
+        <file>bg_monkey.png</file>
+        <file>bg_rabbit.png</file>
+    </qresource>
 </RCC>
