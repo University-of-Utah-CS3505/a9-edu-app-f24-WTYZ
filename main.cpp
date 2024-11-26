@@ -15,13 +15,14 @@
 * misrepresented as being the original software.
 * 3. This notice may not be removed or altered from any source distribution.
 */
-#include "mainwindow.h"
 #include <QApplication>
+#include "mainwindow.h"
 #include <Box2D/Box2D.h>
 #include <stdio.h>
 
 // Box2D 시뮬레이션 함수
-void runBox2DSimulation() {
+void runBox2DSimulation()
+{
     // Define the gravity vector.
     b2Vec2 gravity(0.0f, -10.0f);
 
@@ -74,14 +75,11 @@ void runBox2DSimulation() {
     }
 }
 
-
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     MainWindow mainWindow;
     mainWindow.show();
-
-    runBox2DSimulation();
 
     return app.exec();
 }

@@ -44,6 +44,12 @@ release/b2Island.o
 release/b2World.o
 release/b2WorldCallbacks.o
 release/b2Rope.o
+release/animal.o
+release/helppage.o
 release/main.o
 release/mainwindow.o
+release/rabbit.o
+release/qrc_resources.o
+release/moc_animal.o
+release/moc_helppage.o
 release/moc_mainwindow.o

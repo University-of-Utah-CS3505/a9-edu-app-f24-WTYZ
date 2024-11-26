@@ -34,4 +34,7 @@
         <file>bg_monkey.png</file>
         <file>bg_rabbit.png</file>
     </qresource>
+    <qresource prefix="/animals">
+        <file>obj_rabbit.png</file>
+    </qresource>
 </RCC>

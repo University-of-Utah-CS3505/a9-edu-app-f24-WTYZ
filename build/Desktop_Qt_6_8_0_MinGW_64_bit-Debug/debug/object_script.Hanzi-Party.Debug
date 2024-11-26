@@ -44,6 +44,12 @@ debug/b2Island.o
 debug/b2World.o
 debug/b2WorldCallbacks.o
 debug/b2Rope.o
+debug/animal.o
+debug/helppage.o
 debug/main.o
 debug/mainwindow.o
+debug/rabbit.o
+debug/qrc_resources.o
+debug/moc_animal.o
+debug/moc_helppage.o
 debug/moc_mainwindow.o

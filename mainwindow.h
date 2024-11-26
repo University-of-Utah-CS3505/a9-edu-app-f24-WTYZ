@@ -2,7 +2,10 @@
 #define MAINWINDOW_H
 
 #include "helppage.h"
-
+#include "rabbit.h"
+#include <Box2D/Box2D.h>
+#include <QTimer>
+#include <QLabel>
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -28,7 +31,17 @@ private slots:
     void switchToDog();
     void showHelpPage();
 
+    // rabbit
+    void updateRabbitPhysics();
+    void handleRabbitClick();
+
+
 private:
     Ui::MainWindow *ui;
+
+    // Rabbit-specific physics
+    Rabbit *rabbit = nullptr;
+    b2World *world = nullptr;
+    QTimer *rabbitPhysicsTimer = nullptr;
 };
 #endif // MAINWINDOW_H
