@@ -34,7 +34,7 @@ Dog::Dog(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition)
     barkOutput = new QAudioOutput(this);
     barkSound->setAudioOutput(barkOutput);
     barkOutput->setVolume(0.5); // Volume percentage (0.0 to 1.0)
-    barkSound->setSource(QUrl("qrc:/sounds/bark.mp3")); // Ensure this path is correct
+    barkSound->setSource(QUrl("qrc:/sounds/dog_bark.wav")); // Ensure this path is correct
 
     // Load animation frames
     animationFrames = {
