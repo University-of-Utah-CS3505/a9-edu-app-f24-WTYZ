@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="pageRabbit">
      <property name="sizePolicy">
@@ -295,8 +295,8 @@ color: rgb(60, 60, 60);</string>
      <widget class="QPushButton" name="rabbitButton">
       <property name="geometry">
        <rect>
-        <x>650</x>
-        <y>320</y>
+        <x>620</x>
+        <y>330</y>
         <width>111</width>
         <height>101</height>
        </rect>
@@ -339,6 +339,32 @@ color: rgb(60, 60, 60);</string>
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QPushButton" name="dogButton">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>250</y>
+        <width>111</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/animals/obj_dog.png</normaloff>:/animals/obj_dog.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="pixmap" stdset="0">
+       <pixmap/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pageMonkey">
      <widget class="QLabel" name="bgMonkey">
@@ -358,6 +384,38 @@ color: rgb(60, 60, 60);</string>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="monkeyButton">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>140</y>
+        <width>111</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::StrongFocus</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/animals/obj_monkey.png</normaloff>:/animals/obj_monkey.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="pixmap" stdset="0">
+       <pixmap/>
       </property>
      </widget>
     </widget>
@@ -494,7 +552,7 @@ color: rgb(60, 60, 60);</string>
      <x>0</x>
      <y>0</y>
      <width>801</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGame">

@@ -14,11 +14,16 @@ public:
     virtual ~Animal();
 
     virtual void performAction() = 0; // Each animal will define its action
-    void updatePosition();
+    virtual void updatePosition();
+
+    virtual void updatePhysics(); // New function
+
+    QPushButton* getButton() const; // Getter for button (used for dog and monkey)
 
 protected:
-    QPushButton *button; // UI representation of the animal
+    QPushButton *button;// UI representation of the animal
     b2Body *body;        // Box2D physics body
+    b2World *world;
 };
 
 #endif // ANIMAL_H

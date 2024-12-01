@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -56,9 +56,11 @@ SOURCES += \
     Box2D/Dynamics/b2WorldCallbacks.cpp \
     Box2D/Rope/b2Rope.cpp \
     animal.cpp \
+    dog.cpp \
     helppage.cpp \
     main.cpp \
     mainwindow.cpp \
+    monkey.cpp \
     rabbit.cpp
 
 HEADERS += \
@@ -110,8 +112,10 @@ HEADERS += \
     Box2D/Dynamics/b2WorldCallbacks.h \
     Box2D/Rope/b2Rope.h \
     animal.h \
+    dog.h \
     helppage.h \
     mainwindow.h \
+    monkey.h \
     rabbit.h
 
 FORMS += \
@@ -129,3 +133,4 @@ DISTFILES += \
 
 RESOURCES += \
     resources.qrc
+
