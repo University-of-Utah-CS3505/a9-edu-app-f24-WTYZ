@@ -8,6 +8,7 @@
 #include <QMainWindow>
 #include "dog.h"
 #include "monkey.h"
+#include "rope.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -37,6 +38,7 @@ private slots:
     void handleRabbitClick();
     void handleDogClick();
 
+
 private:
     Ui::MainWindow *ui;
 
@@ -49,6 +51,9 @@ private:
     Rabbit *rabbit = nullptr;          // Rabbit object
     Dog *dog = nullptr;                // Dog object
     Monkey *monkey = nullptr;          // Monkey object
+    Rope *rope;
+    QPushButton *ropeButton;
+
 };
 
 #endif // MAINWINDOW_H

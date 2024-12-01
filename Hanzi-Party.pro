@@ -61,7 +61,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     monkey.cpp \
-    rabbit.cpp
+    rabbit.cpp \
+    rope.cpp
 
 HEADERS += \
     Box2D/Box2D.h \
@@ -116,7 +117,8 @@ HEADERS += \
     helppage.h \
     mainwindow.h \
     monkey.h \
-    rabbit.h
+    rabbit.h \
+    rope.h
 
 FORMS += \
     helppage.ui \

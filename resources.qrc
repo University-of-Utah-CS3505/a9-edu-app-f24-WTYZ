@@ -18,6 +18,7 @@
         <file>frame_003.png</file>
         <file>frame_004.png</file>
         <file>frame_005.png</file>
+        <file>obj_rope.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>dogBark.mp3</file>

@@ -2,6 +2,7 @@
 #define MONKEY_H
 
 #include "animal.h"
+#include "rope.h"
 
 class Monkey : public Animal
 {
@@ -17,10 +18,17 @@ public:
 
     void updatePhysics() override; // Overrides the new method in Animal
 
+    void attachToRope(Rope *rope); // Attach the monkey to the rope
+    bool isNearRope(Rope *rope) const; // Check if the monkey is close enough to the rope
+    bool overlapsWithRope(Rope *rope) const;
+
+    b2Body* getBody() const;
+
 
 private:
     bool isDragging;               // Whether the monkey is being dragged
     QPoint dragStartPosition;      // Start position of the drag
+    b2Joint *ropeJoint; // Joint connecting the monkey to the rope
 };
 
 #endif // MONKEY_H

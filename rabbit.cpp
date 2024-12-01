@@ -53,7 +53,6 @@ void Rabbit::updatePosition()
         float clampedY = std::max(0.0f, std::min(300.0f - position.y * 50.0f, 600.0f)); // Assuming height = 600
 
         button->move(clampedX, clampedY);
-        qDebug() << "Rabbit updated to:" << clampedX << clampedY;
     }
 }
 

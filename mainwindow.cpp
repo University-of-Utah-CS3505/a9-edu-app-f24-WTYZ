@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "rabbit.h"  // Ensure Rabbit header is included for type safety
+#include "rope.h"
 
 #include <QMouseEvent>
 #include <QDebug>
@@ -46,6 +47,47 @@ MainWindow::MainWindow(QWidget *parent)
     // Default setup
     hideAllAnimals();
     switchToRabbit();
+
+    // Ensure the parent widget (current stacked page) is visible
+    QWidget* parentWidget = ui->stackedWidgetBackground->currentWidget();
+    if (!parentWidget->isVisible()) {
+        parentWidget->show(); // Make sure the parent widget is visible
+        qDebug() << "Forcing parent widget to be visible.";
+    }
+
+    // Initialize the rope button and add it to the stacked widget
+    ropeButton = new QPushButton(parentWidget);
+    int parentHeight = ui->stackedWidgetBackground->currentWidget()->height();
+    int buttonHeight = std::min(600, parentHeight); // Ensure button height fits within parent widget
+    ropeButton->setGeometry(400, 0, 300, buttonHeight); // Adjust button geometry to 300 width
+    ropeButton->setStyleSheet("background: transparent; border: none;");
+    ropeButton->setEnabled(true);
+    ropeButton->setFocusPolicy(Qt::StrongFocus);
+    ropeButton->show();
+
+    // Scale and set the icon for ropeButton to 300x300
+    QPixmap pixmap(":/images/obj_rope.png");
+    if (!pixmap.isNull()) {
+        QSize targetSize(300, 300); // Explicitly set icon size to 300x300
+        QPixmap scaledPixmap = pixmap.scaled(
+            targetSize,
+            Qt::KeepAspectRatio,
+            Qt::SmoothTransformation // Smooth scaling
+            );
+        ropeButton->setIcon(QIcon(scaledPixmap));
+        ropeButton->setIconSize(targetSize); // Apply the fixed 300x300 size
+        qDebug() << "Icon scaled to size 300x300 and applied to ropeButton.";
+    } else {
+        qDebug() << "Error: Failed to load obj_rope.png.";
+    }
+
+    qDebug() << "Parent widget geometry:" << parentWidget->geometry()
+             << "Visible:" << parentWidget->isVisible();
+    qDebug() << "Rope button initialized with geometry:" << ropeButton->geometry()
+             << "Visible:" << ropeButton->isVisible();
+
+    // Pass the ropeButton to the Rope constructor
+    rope = new Rope(world, b2Vec2(8.0f, 10.0f), ropeButton);
 }
 
 MainWindow::~MainWindow()
@@ -140,9 +182,12 @@ void MainWindow::updateWorld() {
     if (world) {
         world->Step(timeStep, velocityIterations, positionIterations);
 
+        if (monkey && rope && monkey->overlapsWithRope(rope)) {
+            rope->attachMonkey(monkey->getBody());
+        }
         if (currentAnimal) {
-            currentAnimal->updatePhysics(); // Call custom physics updates
-            currentAnimal->updatePosition(); // Update visual position
+            currentAnimal->updatePhysics();
+            currentAnimal->updatePosition();
         }
     }
 }
@@ -198,19 +243,26 @@ void MainWindow::handleDogClick()
 }
 
 
-void MainWindow::switchToMonkey()
-{
+void MainWindow::switchToMonkey() {
     currentAnimal = monkey;
     hideAllAnimals();
-
-    qDebug() << "Switching to monkey. CurrentAnimal set to:" << currentAnimal;
-
-
 
     ui->btnRabbit->setStyleSheet("background-color: white; border-radius: 25px;");
     ui->btnDog->setStyleSheet("background-color: white; border-radius: 25px;");
     ui->btnMonkey->setStyleSheet("background-color: #25CE45; border-radius: 25px;");
     ui->stackedWidgetBackground->setCurrentIndex(2);
+
+    QWidget* monkeyPage = ui->stackedWidgetBackground->currentWidget();
+    if (!monkeyPage->isVisible()) {
+        monkeyPage->show();
+        qDebug() << "Monkey page forced to visible.";
+    }
+
+    if (ropeButton) {
+        ropeButton->setParent(monkeyPage);
+        ropeButton->show();
+        qDebug() << "Rope button shown on monkey page. Geometry:" << ropeButton->geometry();
+    }
 
     if (monkey && monkey->getButton()) {
         monkey->getButton()->show();

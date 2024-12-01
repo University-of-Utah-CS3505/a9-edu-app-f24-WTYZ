@@ -94,23 +94,60 @@ void Monkey::updatePosition()
         float clampedY = std::max(0.0f, std::min(300.0f - position.y * 50.0f, 600.0f)); // Assuming height = 600
 
         button->move(clampedX, clampedY);
-        qDebug() << "Monkey updated to:" << clampedX << clampedY;
     }
 }
 
 void Monkey::updatePhysics() {
-    if (body) {
-        // Example: Dampen horizontal velocity
-        b2Vec2 velocity = body->GetLinearVelocity();
-        if (std::abs(velocity.x) > 10.0f) { // Limit horizontal speed
-            velocity.x *= 0.9f;
-        }
-        body->SetLinearVelocity(velocity);
+    if (ropeJoint) {
+        // Monkey is swinging; let physics handle the movement
+        qDebug() << "Monkey is swinging on the rope.";
+    } else {
+        // Default physics update
+        if (body) {
+            // Example: Dampen horizontal velocity
+            b2Vec2 velocity = body->GetLinearVelocity();
+            if (std::abs(velocity.x) > 10.0f) { // Limit horizontal speed
+                velocity.x *= 0.9f;
+            }
+            body->SetLinearVelocity(velocity);
 
-        // Ensure the monkey doesn't leave bounds
-        b2Vec2 position = body->GetPosition();
-        if (position.x < 0 || position.x > 16 || position.y < -2 || position.y > 6) {
-            body->SetTransform(b2Vec2(8, 4), body->GetAngle()); // Reset position
+            // Ensure the monkey doesn't leave bounds
+            b2Vec2 position = body->GetPosition();
+            if (position.x < 0 || position.x > 16 || position.y < -2 || position.y > 6) {
+                body->SetTransform(b2Vec2(8, 4), body->GetAngle()); // Reset position
+            }
         }
     }
+}
+
+void Monkey::attachToRope(Rope* rope) {
+    if (rope) {
+        rope->attachMonkey(body);
+        qDebug() << "Monkey attached to the rope!";
+    }
+}
+
+bool Monkey::isNearRope(Rope *rope) const {
+    if (!rope) return false;
+
+    b2Vec2 monkeyPos = body->GetPosition();
+    b2Vec2 ropePos = rope->getBody()->GetPosition();
+
+    return (monkeyPos - ropePos).Length() < 1.5f; // Adjust proximity threshold as needed
+}
+
+bool Monkey::overlapsWithRope(Rope* rope) const {
+    b2Body* ropeBody = rope->getBottomSegment();
+    if (!ropeBody) return false;
+
+
+
+    b2Vec2 monkeyPosition = body->GetPosition();
+    b2Vec2 ropePosition = ropeBody->GetPosition();
+
+    return std::abs(monkeyPosition.x - ropePosition.x) < 1.0f &&
+           std::abs(monkeyPosition.y - ropePosition.y) < 1.0f;
+}
+b2Body* Monkey::getBody() const {
+    return body;
 }
