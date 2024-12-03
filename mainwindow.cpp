@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "rabbit.h"  // Ensure Rabbit header is included for type safety
 #include "rope.h"
+#include "hanzicanvas.h"
 
 #include <QMouseEvent>
 #include <QDebug>
@@ -16,8 +17,6 @@ MainWindow::MainWindow(QWidget *parent)
     qDebug() << "Creating Box2D world...";
     b2Vec2 gravity(0.0f, -9.8f); // Standard gravity
     world = new b2World(gravity);
-
-
 
     // Create ground to prevent animals from falling
     b2BodyDef groundBodyDef;
@@ -191,6 +190,7 @@ void MainWindow::updateWorld() {
         }
     }
 }
+
 void MainWindow::switchToRabbit()
 {
     currentAnimal = rabbit;
@@ -204,6 +204,35 @@ void MainWindow::switchToRabbit()
     if (rabbit && rabbit->getButton()) {
         rabbit->getButton()->show();
     }
+
+    ui->labelHanziAnimal->setText("兔");
+    ui->labelHanziAnimal->setStyleSheet(
+        "font-size: 90px;"
+        "font-family: SimKai;"
+        "font-weight: bold;"
+        "color: rgba(0, 0, 0, 40%);"
+        "background: transparent;"
+        );
+    ui->labelHanziAnimal->setAlignment(Qt::AlignCenter);
+
+    ui->labelHanziVerb->setText("跳");
+    ui->labelHanziVerb->setStyleSheet(
+        "font-size: 90px;"
+        "font-family: SimKai;"
+        "font-weight: bold;"
+        "color: rgba(0, 0, 0, 40%);"
+        "background: transparent;"
+        );
+    ui->labelHanziVerb->setAlignment(Qt::AlignCenter);
+
+    HanziCanvas* canvasLeft = new HanziCanvas(this);
+    canvasLeft->setGeometry(ui->userWriteLeft->geometry());
+    canvasLeft->show();
+
+    HanziCanvas* canvasRight = new HanziCanvas(this);
+    canvasRight->setGeometry(ui->userWriteRight->geometry());
+    canvasRight->show();
+
 }
 
 void MainWindow::handleRabbitClick()
@@ -231,6 +260,26 @@ void MainWindow::switchToDog()
     } else {
         qDebug() << "Dog object or button not initialized!";
     }
+
+    ui->labelHanziAnimal_3->setText("狗");
+    ui->labelHanziAnimal_3->setStyleSheet(
+        "font-size: 90px;"
+        "font-family: SimKai;"
+        "font-weight: bold;"
+        "color: rgba(0, 0, 0, 40%);"
+        "background: transparent;"
+        );
+    ui->labelHanziAnimal_3->setAlignment(Qt::AlignCenter);
+
+    ui->labelHanziVerb_3->setText("叫");
+    ui->labelHanziVerb_3->setStyleSheet(
+        "font-size: 90px;"
+        "font-family: SimKai;"
+        "font-weight: bold;"
+        "color: rgba(0, 0, 0, 40%);"
+        "background: transparent;"
+        );
+    ui->labelHanziVerb_3->setAlignment(Qt::AlignCenter);
 }
 
 void MainWindow::handleDogClick()
@@ -268,6 +317,26 @@ void MainWindow::switchToMonkey() {
         monkey->getButton()->show();
         qDebug() << "Monkey button shown at:" << monkey->getButton()->geometry();
     }
+
+    ui->labelHanziAnimal_2->setText("猴");
+    ui->labelHanziAnimal_2->setStyleSheet(
+        "font-size: 90px;"
+        "font-family: SimKai;"
+        "font-weight: bold;"
+        "color: rgba(0, 0, 0, 40%);"
+        "background: transparent;"
+        );
+    ui->labelHanziAnimal_2->setAlignment(Qt::AlignCenter);
+
+    ui->labelHanziVerb_2->setText("荡");
+    ui->labelHanziVerb_2->setStyleSheet(
+        "font-size: 90px;"
+        "font-family: SimKai;"
+        "font-weight: bold;"
+        "color: rgba(0, 0, 0, 40%);"
+        "background: transparent;"
+        );
+    ui->labelHanziVerb_2->setAlignment(Qt::AlignCenter);
 }
 
 void MainWindow::hideAllAnimals()

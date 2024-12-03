@@ -6,6 +6,7 @@
 #include <Box2D/Box2D.h>
 #include <QTimer>
 #include <QMainWindow>
+#include <QLabel>
 #include "dog.h"
 #include "monkey.h"
 #include "rope.h"
