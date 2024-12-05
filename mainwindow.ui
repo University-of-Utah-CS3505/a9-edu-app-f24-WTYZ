@@ -85,6 +85,9 @@
         <height>141</height>
        </rect>
       </property>
+      <property name="mouseTracking">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -122,6 +125,12 @@
         <width>151</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="tabletTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string/>
@@ -187,6 +196,12 @@ background-color: rgba(255, 255, 255, 0.3);</string>
         <width>151</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="tabletTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string/>
@@ -318,7 +333,7 @@ color: rgb(60, 60, 60);</string>
        <pixmap/>
       </property>
      </widget>
-     <widget class="QLabel" name="userWriteLeft">
+     <widget class="QWidget" name="userInputLeft" native="true">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -327,23 +342,11 @@ color: rgb(60, 60, 60);</string>
         <height>141</height>
        </rect>
       </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
       <property name="styleSheet">
-       <string notr="true">background:transparent;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::NoFrame</enum>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="wordWrap">
-       <bool>false</bool>
+       <string notr="true">background: transparent;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="userWriteRight">
+     <widget class="QWidget" name="userInputRight" native="true">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -352,20 +355,8 @@ color: rgb(60, 60, 60);</string>
         <height>141</height>
        </rect>
       </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
       <property name="styleSheet">
-       <string notr="true">background:transparent;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::NoFrame</enum>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="wordWrap">
-       <bool>false</bool>
+       <string notr="true">background: transparent;</string>
       </property>
      </widget>
      <zorder>bgRabbit</zorder>
@@ -381,8 +372,8 @@ color: rgb(60, 60, 60);</string>
      <zorder>translateEnglish</zorder>
      <zorder>labelSound</zorder>
      <zorder>rabbitButton</zorder>
-     <zorder>userWriteLeft</zorder>
-     <zorder>userWriteRight</zorder>
+     <zorder>userInputLeft</zorder>
+     <zorder>userInputRight</zorder>
     </widget>
     <widget class="QWidget" name="pageDog">
      <widget class="QLabel" name="bgDog">
@@ -646,7 +637,7 @@ color: rgb(60, 60, 60);</string>
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="userWriteRight_3">
+     <widget class="QWidget" name="userInputRight_3" native="true">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -655,23 +646,11 @@ color: rgb(60, 60, 60);</string>
         <height>141</height>
        </rect>
       </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
       <property name="styleSheet">
-       <string notr="true">background:transparent;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::NoFrame</enum>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="wordWrap">
-       <bool>false</bool>
+       <string notr="true">background: transparent;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="userWriteLeft_3">
+     <widget class="QWidget" name="userInputLeft_3" native="true">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -680,20 +659,8 @@ color: rgb(60, 60, 60);</string>
         <height>141</height>
        </rect>
       </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
       <property name="styleSheet">
-       <string notr="true">background:transparent;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::NoFrame</enum>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="wordWrap">
-       <bool>false</bool>
+       <string notr="true">background: transparent;</string>
       </property>
      </widget>
     </widget>
@@ -1006,7 +973,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="userWriteRight_2">
+     <widget class="QWidget" name="userInputRight_2" native="true">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -1015,23 +982,11 @@ background-color: rgba(255, 255, 255, 0.3);</string>
         <height>141</height>
        </rect>
       </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
       <property name="styleSheet">
-       <string notr="true">background:transparent;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::NoFrame</enum>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="wordWrap">
-       <bool>false</bool>
+       <string notr="true">background: transparent;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="userWriteLeft_2">
+     <widget class="QWidget" name="userInputLeft_2" native="true">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -1040,20 +995,8 @@ background-color: rgba(255, 255, 255, 0.3);</string>
         <height>141</height>
        </rect>
       </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
       <property name="styleSheet">
-       <string notr="true">background:transparent;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::NoFrame</enum>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="wordWrap">
-       <bool>false</bool>
+       <string notr="true">background: transparent;</string>
       </property>
      </widget>
      <zorder>bgMonkey</zorder>
@@ -1070,8 +1013,8 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <zorder>labelSound_2</zorder>
      <zorder>labelHanziAnimal_2</zorder>
      <zorder>setContainerRight_2</zorder>
-     <zorder>userWriteRight_2</zorder>
-     <zorder>userWriteLeft_2</zorder>
+     <zorder>userInputRight_2</zorder>
+     <zorder>userInputLeft_2</zorder>
     </widget>
    </widget>
    <widget class="QPushButton" name="helpButton">
@@ -1197,6 +1140,22 @@ background-color: rgba(255, 255, 255, 0.3);</string>
       <width>36</width>
       <height>36</height>
      </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>520</y>
+      <width>83</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:white; color:black; font-weight:bold;</string>
+    </property>
+    <property name="text">
+     <string>Clear</string>
     </property>
    </widget>
   </widget>

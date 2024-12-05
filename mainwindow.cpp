@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include "rabbit.h"  // Ensure Rabbit header is included for type safety
 #include "rope.h"
-#include "hanzicanvas.h"
 
 #include <QMouseEvent>
 #include <QDebug>
@@ -87,6 +86,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Pass the ropeButton to the Rope constructor
     rope = new Rope(world, b2Vec2(8.0f, 10.0f), ropeButton);
+
 }
 
 MainWindow::~MainWindow()
@@ -224,15 +224,6 @@ void MainWindow::switchToRabbit()
         "background: transparent;"
         );
     ui->labelHanziVerb->setAlignment(Qt::AlignCenter);
-
-    HanziCanvas* canvasLeft = new HanziCanvas(this);
-    canvasLeft->setGeometry(ui->userWriteLeft->geometry());
-    canvasLeft->show();
-
-    HanziCanvas* canvasRight = new HanziCanvas(this);
-    canvasRight->setGeometry(ui->userWriteRight->geometry());
-    canvasRight->show();
-
 }
 
 void MainWindow::handleRabbitClick()

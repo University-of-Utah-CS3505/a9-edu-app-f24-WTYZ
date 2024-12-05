@@ -57,7 +57,7 @@ SOURCES += \
     Box2D/Rope/b2Rope.cpp \
     animal.cpp \
     dog.cpp \
-    hanzicanvas.cpp \
+    drawingwidget.cpp \
     helppage.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -115,7 +115,7 @@ HEADERS += \
     Box2D/Rope/b2Rope.h \
     animal.h \
     dog.h \
-    hanzicanvas.h \
+    drawingwidget.h \
     helppage.h \
     mainwindow.h \
     monkey.h \

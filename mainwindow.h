@@ -10,6 +10,7 @@
 #include "dog.h"
 #include "monkey.h"
 #include "rope.h"
+#include "drawingwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -54,7 +55,6 @@ private:
     Monkey *monkey = nullptr;          // Monkey object
     Rope *rope;
     QPushButton *ropeButton;
-
 };
 
 #endif // MAINWINDOW_H
