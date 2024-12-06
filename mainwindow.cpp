@@ -4,9 +4,7 @@
 #include "rope.h"
 
 #include <QMouseEvent>
-#include <QLabel>
 #include <QDebug>
-#include <QMovie>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -97,6 +95,39 @@ MainWindow::~MainWindow()
     delete world; // Clean up Box2D world
     delete ui;
 }
+
+void MainWindow::playAnimalGifOnce(QLabel *gifLabel, const QString &gifPath, int durationMs)
+{
+    QMovie *animalGifMovie = new QMovie(gifPath, QByteArray(), this);
+    gifLabel->setMovie(animalGifMovie);
+    gifLabel->setScaledContents(true);
+
+    QTimer *timer = new QTimer(this);
+    timer->setSingleShot(true);
+
+    QGraphicsOpacityEffect *opacityEffect = new QGraphicsOpacityEffect(gifLabel);
+    opacityEffect->setOpacity(0.5);
+    gifLabel->setGraphicsEffect(opacityEffect);
+
+    connect(timer, &QTimer::timeout, this, [animalGifMovie, timer]() {
+        animalGifMovie->stop();
+        timer->deleteLater();
+    });
+
+    animalGifMovie->start();
+    gifLabel->setVisible(true);
+    timer->start(durationMs);
+}
+
+void MainWindow::enableAnimalDrawing(DrawingWidget *drawingWidget)
+{
+    ui->drawingWidget_rabbit->raise();
+    ui->drawingWidget_dog->raise();
+    ui->drawingWidget_monkey->raise();
+    drawingWidget->show();
+    drawingWidget->clearDrawing();
+}
+
 
 void MainWindow::settingSounds()
 {
@@ -201,26 +232,33 @@ void MainWindow::settingScreenUI()
 
 void MainWindow::connections()
 {
+    // Connect to Help Page
+    connect(ui->helpButton, &QPushButton::clicked, this, &MainWindow::showHelpPage);
+
+    // Connect Menu Button on the buttom page
     connect(ui->btnRabbit, &QPushButton::clicked, this, &MainWindow::switchToRabbit);
     connect(ui->btnMonkey, &QPushButton::clicked, this, &MainWindow::switchToMonkey);
     connect(ui->btnDog, &QPushButton::clicked, this, &MainWindow::switchToDog);
-    connect(ui->helpButton, &QPushButton::clicked, this, &MainWindow::showHelpPage);
 
+    // Connect Animations
     connect(ui->rabbitButton, &QPushButton::clicked, this, &MainWindow::handleRabbitClick);
-
     connect(ui->dogButton, &QPushButton::clicked, this, &MainWindow::handleDogClick);
 
+    // Connect Sounds
     connect(ui->soundButton, &QPushButton::clicked, this, [this]() {
-        if (rabbitSound) rabbitSound->play();
-    });
-
+        if (rabbitSound) rabbitSound->play();});
     connect(ui->soundButton_2, &QPushButton::clicked, this, [this]() {
-        if (dogSound) dogSound->play();
-    });
-
+        if (dogSound) dogSound->play();});
     connect(ui->soundButton_3, &QPushButton::clicked, this, [this]() {
-        if (monkeySound) monkeySound->play();
-    });
+        if (monkeySound) monkeySound->play();});
+
+    // Connect Erase Button
+    connect(ui->clearButton_rabbit, &QPushButton::clicked, this, [this]() {
+        ui->drawingWidget_rabbit->clearDrawing();});
+    connect(ui->clearButton_monkey, &QPushButton::clicked, this, [this]() {
+        ui->drawingWidget_monkey->clearDrawing();});
+    connect(ui->clearButton_dog, &QPushButton::clicked, this, [this]() {
+        ui->drawingWidget_dog->clearDrawing();});
 
 
 }
@@ -257,29 +295,9 @@ void MainWindow::switchToRabbit()
         rabbit->getButton()->show();
     }
 
-    ui->labelHanziAnimal->setText("兔");
-    ui->labelHanziAnimal->setStyleSheet(
-        "font-size: 90px;"
-        "font-family: SimKai;"
-        "font-weight: bold;"
-        "color: rgba(0, 0, 0, 40%);"
-        "background: transparent;"
-        );
-    ui->labelHanziAnimal->setAlignment(Qt::AlignCenter);
-
-    ui->labelHanziVerb->setText("跳");
-    ui->labelHanziVerb->setStyleSheet(
-        "font-size: 90px;"
-        "font-family: SimKai;"
-        "font-weight: bold;"
-        "color: rgba(0, 0, 0, 40%);"
-        "background: transparent;"
-        );
-    ui->labelHanziVerb->setAlignment(Qt::AlignCenter);
-
     ui->translateEnglish->setText("Rabbit Jumps");
     ui->translateChinese->setText("兔跳");
-    ui->translateChinese->setStyleSheet("font-size: 16px;" "background:transparent;");
+    ui->translateChinese->setStyleSheet("color: black;" "font-size: 16px;" "background:transparent;");
 
     QMovie *leftMovie = new QMovie(":/animations/gif_rabbit_tu.gif");
     ui->leftGifLabel->setScaledContents(true);
@@ -290,6 +308,12 @@ void MainWindow::switchToRabbit()
     ui->rightGifLabel->setScaledContents(true);
     ui->rightGifLabel->setMovie(rightMovie);
     rightMovie->start();
+
+
+    //Main Containter Gif & User Input Drawing
+    playAnimalGifOnce(ui->gifContainerRight_rabbit, ":/animations/gif_run_tiao.gif", 10);
+    playAnimalGifOnce(ui->gifContainerLeft_rabbit, ":/animations/gif_rabbit_tu.gif", 10);
+    enableAnimalDrawing(ui->drawingWidget_rabbit);
 }
 
 void MainWindow::handleRabbitClick()
@@ -318,29 +342,9 @@ void MainWindow::switchToDog()
         qDebug() << "Dog object or button not initialized!";
     }
 
-    ui->labelHanziAnimal_3->setText("狗");
-    ui->labelHanziAnimal_3->setStyleSheet(
-        "font-size: 90px;"
-        "font-family: SimKai;"
-        "font-weight: bold;"
-        "color: rgba(0, 0, 0, 40%);"
-        "background: transparent;"
-        );
-    ui->labelHanziAnimal_3->setAlignment(Qt::AlignCenter);
-
-    ui->labelHanziVerb_3->setText("叫");
-    ui->labelHanziVerb_3->setStyleSheet(
-        "font-size: 90px;"
-        "font-family: SimKai;"
-        "font-weight: bold;"
-        "color: rgba(0, 0, 0, 40%);"
-        "background: transparent;"
-        );
-    ui->labelHanziVerb_3->setAlignment(Qt::AlignCenter);
-
     ui->translateEnglish_3->setText("Dog Runs");
-    ui->translateChinese_3->setText("狗叫");
-    ui->translateChinese_3->setStyleSheet("font-size: 16px;" "background:transparent;");
+    ui->translateChinese_3->setText("狗狗");
+    ui->translateChinese_3->setStyleSheet("color: black;" "font-size: 16px;" "background:transparent;");
 
     QMovie *leftMovie = new QMovie(":/animations/gif_dog_gou.gif");
     ui->leftGifLabel_3->setScaledContents(true);
@@ -351,6 +355,11 @@ void MainWindow::switchToDog()
     ui->rightGifLabel_3->setScaledContents(true);
     ui->rightGifLabel_3->setMovie(rightMovie);
     rightMovie->start();
+
+    //Main Containter Gif & User Input Drawing
+    playAnimalGifOnce(ui->gifContainerRight_dog, ":/animations/gif_run_pao.gif", 10);
+    playAnimalGifOnce(ui->gifContainerLeft_dog, ":/animations/gif_dog_gou.gif", 10);
+    enableAnimalDrawing(ui->drawingWidget_dog);
 
 }
 
@@ -390,26 +399,6 @@ void MainWindow::switchToMonkey() {
         qDebug() << "Monkey button shown at:" << monkey->getButton()->geometry();
     }
 
-    ui->labelHanziAnimal_2->setText("猴");
-    ui->labelHanziAnimal_2->setStyleSheet(
-        "font-size: 90px;"
-        "font-family: SimKai;"
-        "font-weight: bold;"
-        "color: rgba(0, 0, 0, 40%);"
-        "background: transparent;"
-        );
-    ui->labelHanziAnimal_2->setAlignment(Qt::AlignCenter);
-
-    ui->labelHanziVerb_2->setText("荡");
-    ui->labelHanziVerb_2->setStyleSheet(
-        "font-size: 90px;"
-        "font-family: SimKai;"
-        "font-weight: bold;"
-        "color: rgba(0, 0, 0, 40%);"
-        "background: transparent;"
-        );
-    ui->labelHanziVerb_2->setAlignment(Qt::AlignCenter);
-
     ui->translateEnglish_2->setText("Monkey Swings");
     ui->translateChinese_2->setText("猴荡");
     ui->translateEnglish_2->setStyleSheet("color: white;");
@@ -425,6 +414,11 @@ void MainWindow::switchToMonkey() {
     ui->rightGifLabel_2->setScaledContents(true);
     ui->rightGifLabel_2->setMovie(rightMovie);
     rightMovie->start();
+
+    //Main Containter Gif & User Input Drawing
+    playAnimalGifOnce(ui->gifContainerRight_monkey, ":/animations/gif_swing_dang.gif", 10);
+    playAnimalGifOnce(ui->gifContainerLeft_monkey, ":/animations/gif_monkey_hou.gif", 10);
+    enableAnimalDrawing(ui->drawingWidget_monkey);
 }
 
 void MainWindow::hideAllAnimals()
