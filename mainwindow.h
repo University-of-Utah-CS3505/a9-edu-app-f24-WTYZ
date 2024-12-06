@@ -1,22 +1,20 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-
-#include <QTimer>
-#include <QMainWindow>
-#include <QLabel>
-#include <QMovie>
-#include <QMediaPlayer>
 #include <QAudioOutput>
+#include <QLabel>
+#include <QMainWindow>
+#include <QMediaPlayer>
+#include <QMovie>
+#include <QTimer>
 #include <Box2D/Box2D.h>
 
 #include "dog.h"
-#include "monkey.h"
-#include "rope.h"
 #include "drawingwidget.h"
 #include "helppage.h"
+#include "monkey.h"
 #include "rabbit.h"
-
+#include "rope.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -47,7 +45,6 @@ private slots:
     void handleRabbitClick();
     void handleDogClick();
 
-
 private:
     Ui::MainWindow *ui;
 
@@ -55,17 +52,18 @@ private:
     QTimer *worldUpdateTimer = nullptr; // Global physics timer
 
     b2Body *groundBody = nullptr;
-    Animal* currentAnimal = nullptr;
+    Animal *currentAnimal = nullptr;
 
-    Rabbit *rabbit = nullptr;          // Rabbit object
-    Dog *dog = nullptr;                // Dog object
-    Monkey *monkey = nullptr;          // Monkey object
+    Rabbit *rabbit = nullptr; // Rabbit object
+    Dog *dog = nullptr;       // Dog object
+    Monkey *monkey = nullptr; // Monkey object
     Rope *rope;
     QPushButton *ropeButton;
 
-    QMediaPlayer *rabbitSound = nullptr;    // Rabbit sound
-    QMediaPlayer *dogSound = nullptr;       // Dog sound
-    QMediaPlayer *monkeySound = nullptr;    // Monkey sound
+    QMediaPlayer *rabbitSound = nullptr; // Rabbit sound
+    QMediaPlayer *dogSound = nullptr;    // Dog sound
+    QMediaPlayer *monkeySound = nullptr; // Monkey sound
+    void updateGroundPosition(float yPosition, float width, float height);
 };
 
 #endif // MAINWINDOW_H

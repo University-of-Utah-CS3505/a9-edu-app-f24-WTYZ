@@ -1,6 +1,6 @@
 #include "DrawingWidget.h"
-#include <QPainter>
 #include <QMouseEvent>
+#include <QPainter>
 
 DrawingWidget::DrawingWidget(QWidget *parent)
     : QWidget(parent)
@@ -25,7 +25,6 @@ void DrawingWidget::paintEvent(QPaintEvent *event)
 
     QPen pen(Qt::black, 4, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
     painter.setPen(pen);
-
 
     for (const auto &stroke : strokes) {
         for (int i = 1; i < stroke.size(); ++i) {

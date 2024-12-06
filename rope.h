@@ -13,7 +13,7 @@ class Rope : public QPushButton
     Q_OBJECT
 
 public:
-    Rope(b2World* world, const b2Vec2& anchorPosition, QPushButton* uiButton);
+    Rope(b2World *world, const b2Vec2 &anchorPosition, const std::vector<QPushButton *> &buttonSegments);
     ~Rope();
 
     void attachMonkey(b2Body* monkeyBody); // Attach monkey to the rope
@@ -25,6 +25,7 @@ public:
     bool isAttached() const;              // Check if a monkey is attached
     void resizeRope(int segmentCount, float segmentWidth, float segmentHeight); // Resize the rope
     void updateBottomPosition(float deltaY); // Move bottom rope segment
+    b2RevoluteJoint* getJoint();
 
 protected:
     bool eventFilter(QObject* obj, QEvent* event) override;
@@ -35,6 +36,7 @@ private:
     b2Body* monkeyBody;              // The monkey attached to the rope
     b2Joint* joint;                  // Joint connecting the monkey and the rope
     std::vector<b2Body*> ropeSegments; // Rope segments (dynamic bodies)
+    std::vector<QPushButton *> buttonSegments; // QPushButton rope segments
 
     QPushButton* button; // UI representation of the rope
     bool isDragging;               // Track if the rope is being dragged

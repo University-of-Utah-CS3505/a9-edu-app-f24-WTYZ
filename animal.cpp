@@ -1,7 +1,8 @@
 #include "animal.h"
 
 Animal::Animal(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition)
-    : button(uiButton), world(world)
+    : button(uiButton)
+    , world(world)
 {
     // Define the Box2D body for the animal
     b2BodyDef bodyDef;
@@ -34,11 +35,12 @@ void Animal::updatePosition()
     }
 }
 
-QPushButton* Animal::getButton() const
+QPushButton *Animal::getButton() const
 {
     return button;
 }
 
-void Animal::updatePhysics() {
+void Animal::updatePhysics()
+{
     // Default physics update; overridden by specific animals
 }

@@ -1,34 +1,12 @@
 #include "rope.h"
 
-Rope::Rope(b2World* world, const b2Vec2& anchorPosition, QPushButton* uiButton)
-    : world(world), monkeyBody(nullptr), joint(nullptr), button(uiButton), isDragging(false)
+Rope::Rope(b2World *world, const b2Vec2 &anchorPosition, const std::vector<QPushButton *> &buttonSegments)
+    : world(world), buttonSegments(buttonSegments)
 {
-    if (!button) {
-        qDebug() << "Error: ropeButton is null.";
+    if (buttonSegments.empty()) {
+        qDebug() << "Error: No buttons provided for the rope.";
         return;
     }
-
-    // Install event filter and verify success
-    button->installEventFilter(this);
-    qDebug() << "Event filter installed on Rope button:";
-
-    // Set button properties
-    button->setParent(this); // Ensure button belongs to the Rope
-    button->setEnabled(true);
-    button->setFocusPolicy(Qt::StrongFocus);
-    button->setGeometry(anchorPosition.x * 50 - 15, 0, 50, 600);
-    button->setGeometry(anchorPosition.x * 50 - 15, 0, 300, 600); // Match button geometry
-    button->setIcon(QIcon(":/images/rope_icon.png"));
-    button->setIconSize(QSize(300, 300)); // Use fixed icon size
-    button->setStyleSheet("background: transparent; border: none;");
-    button->show();
-
-    // Debug button state
-    qDebug() << "Button properties:"
-             << "\nEnabled:" << button->isEnabled()
-             << "\nFocusPolicy:" << button->focusPolicy()
-             << "\nGeometry:" << button->geometry()
-             << "\nVisible:" << button->isVisible();
 
     // Create Box2D anchor body
     b2BodyDef anchorDef;
@@ -39,24 +17,29 @@ Rope::Rope(b2World* world, const b2Vec2& anchorPosition, QPushButton* uiButton)
     // Create rope segments
     float segmentWidth = 0.2f;
     float segmentHeight = 0.5f;
-    int segmentCount = 20;
 
-    for (int i = 0; i < segmentCount; ++i) {
+    for (size_t i = 0; i < buttonSegments.size(); ++i) {
         b2BodyDef segmentDef;
         segmentDef.type = b2_dynamicBody;
+
+        // Calculate the Box2D position based on button index and spacing
         segmentDef.position.Set(anchorPosition.x, anchorPosition.y - i * segmentHeight);
 
-        b2Body* segment = world->CreateBody(&segmentDef);
+        b2Body *segment = world->CreateBody(&segmentDef);
+
+        // Define the shape and fixture for the Box2D body
         b2PolygonShape segmentShape;
         segmentShape.SetAsBox(segmentWidth, segmentHeight);
+
         b2FixtureDef fixtureDef;
         fixtureDef.shape = &segmentShape;
         fixtureDef.density = 1.0f;
         fixtureDef.friction = 0.5f;
-
         segment->CreateFixture(&fixtureDef);
+
         ropeSegments.push_back(segment);
 
+        // Connect joints between consecutive segments
         if (i > 0) {
             b2RevoluteJointDef jointDef;
             jointDef.bodyA = ropeSegments[i - 1];
@@ -67,7 +50,7 @@ Rope::Rope(b2World* world, const b2Vec2& anchorPosition, QPushButton* uiButton)
         }
     }
 
-    // Attach first segment to anchor
+    // Attach the first segment to the anchor body
     b2RevoluteJointDef anchorJointDef;
     anchorJointDef.bodyA = anchorBody;
     anchorJointDef.bodyB = ropeSegments[0];
@@ -75,8 +58,8 @@ Rope::Rope(b2World* world, const b2Vec2& anchorPosition, QPushButton* uiButton)
     anchorJointDef.localAnchorB.Set(0.0f, segmentHeight);
     world->CreateJoint(&anchorJointDef);
 
-    qDebug() << "Rope initialized with" << ropeSegments.size() << "segments at anchor position:"
-             << anchorPosition.x << anchorPosition.y;
+    qDebug() << "Rope initialized with" << ropeSegments.size() << "segments.";
+
 }
 
 Rope::~Rope()
@@ -135,19 +118,30 @@ bool Rope::eventFilter(QObject* obj, QEvent* event) {
 }
 
 void Rope::attachMonkey(b2Body* monkeyBody) {
-    if (joint) {
-        world->DestroyJoint(joint); // Destroy existing joint
+    if (!monkeyBody) {
+        qDebug() << "Error: Monkey body is null.";
+        return;
     }
 
-    this->monkeyBody = monkeyBody;
+    // Destroy any existing joint
+    if (joint) {
+        world->DestroyJoint(joint);
+        joint = nullptr;
+    }
+
+    // Attach the monkey to the bottom segment of the rope
     b2RevoluteJointDef jointDef;
     jointDef.bodyA = getBottomSegment();
     jointDef.bodyB = monkeyBody;
-    jointDef.localAnchorA.Set(0.0f, -0.3f);
-    jointDef.localAnchorB.Set(0.0f, 0.5f);
-    joint = world->CreateJoint(&jointDef);
+    jointDef.localAnchorA.Set(0.0f, -0.3f); // Adjust attachment point
+    jointDef.localAnchorB.Set(0.0f, 0.5f);  // Adjust monkey's anchor point
 
-    qDebug() << "Monkey successfully attached to the rope.";
+    joint = world->CreateJoint(&jointDef);
+    if (joint) {
+        qDebug() << "Monkey successfully attached to the rope.";
+    } else {
+        qDebug() << "Error: Failed to create joint for Monkey and Rope.";
+    }
 }
 
 void Rope::enableSwingingMotor() {
@@ -158,19 +152,18 @@ void Rope::enableSwingingMotor() {
         jointDef.localAnchorA.Set(0.0f, -0.25f);
         jointDef.localAnchorB.Set(0.0f, 0.25f);
         jointDef.enableMotor = true;
-        jointDef.motorSpeed = -5.0f;
+        jointDef.motorSpeed = -5.0f; // Adjust speed
         jointDef.maxMotorTorque = 10.0f;
         world->CreateJoint(&jointDef);
-        qDebug() << "Swinging motor enabled.";
     }
 }
 
+b2RevoluteJoint* Rope::getJoint()  {
+    return static_cast<b2RevoluteJoint*>(joint);
+}
+
 b2Body* Rope::getBottomSegment() const {
-    if (ropeSegments.empty()) {
-        qDebug() << "Error: Rope segments are empty. Returning nullptr.";
-        return nullptr;
-    }
-    return ropeSegments.back();
+    return ropeSegments.empty() ? nullptr : ropeSegments.back();
 }
 
 b2Body* Rope::getBody() const {
@@ -178,12 +171,23 @@ b2Body* Rope::getBody() const {
 }
 
 void Rope::updatePosition() {
-    if (!ropeSegments.empty()) {
-        b2Vec2 position = ropeSegments.front()->GetPosition();
-        int x = static_cast<int>(position.x * 50);
-        int y = static_cast<int>(position.y * 50);
-        button->move(x, y);
-        qDebug() << "Rope updated to UI position:" << button->pos() << "Physics position:" << position.x << position.y;
+    if (ropeSegments.size() != buttonSegments.size()) {
+        qDebug() << "Mismatch between rope segments and button segments.";
+        return;
+    }
+
+    for (size_t i = 0; i < ropeSegments.size(); ++i) {
+        b2Vec2 position = ropeSegments[i]->GetPosition();
+        float angle = ropeSegments[i]->GetAngle();
+
+        // Map Box2D coordinates to screen coordinates
+        int x = static_cast<int>(position.x * 50 - buttonSegments[i]->width() / 2);
+        int y = static_cast<int>(300 - position.y * 50 - buttonSegments[i]->height() / 2);
+
+        buttonSegments[i]->move(x, y);
+
+        // Apply rotation to the QPushButton
+        buttonSegments[i]->setStyleSheet("background: transparent; ");
     }
 }
 

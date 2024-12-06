@@ -1,9 +1,10 @@
 #include "monkey.h"
-#include <QMouseEvent>
 #include <QDebug>
+#include <QMouseEvent>
 
 Monkey::Monkey(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition)
-    : Animal(uiButton, world, initialPosition), isDragging(false)
+    : Animal(uiButton, world, initialPosition)
+    , isDragging(false)
 {
     if (!world) {
         qDebug() << "Error: world is null in Monkey constructor!";
@@ -21,8 +22,8 @@ Monkey::Monkey(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosit
     boxShape.SetAsBox(1.0f, 1.0f); // Adjust monkey's size
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &boxShape;
-    fixtureDef.density = 1.0f; // Adjust density for better stability
-    fixtureDef.friction = 0.5f; // Add some friction to prevent sliding
+    fixtureDef.density = 1.0f;     // Adjust density for better stability
+    fixtureDef.friction = 0.5f;    // Add some friction to prevent sliding
     fixtureDef.restitution = 0.1f; // Minimal bounce
     body->CreateFixture(&fixtureDef);
 
@@ -65,10 +66,12 @@ bool Monkey::eventFilter(QObject *watched, QEvent *event)
 
                     // Update the Box2D body position
                     float newX = newPos.x() / 50.0f;
-                    float newY = (300 - newPos.y()) / 50.0f; // Adjust Y coordinate for UI to Box2D mapping
+                    float newY = (300 - newPos.y())
+                                 / 50.0f; // Adjust Y coordinate for UI to Box2D mapping
                     body->SetTransform(b2Vec2(newX, newY), body->GetAngle());
 
-                    qDebug() << "Monkey dragged to UI position:" << newPos << " | Physics position:" << newX << "," << newY;
+                    qDebug() << "Monkey dragged to UI position:" << newPos
+                             << " | Physics position:" << newX << "," << newY;
                     return true;
                 }
             }
@@ -90,14 +93,18 @@ void Monkey::updatePosition()
         b2Vec2 position = body->GetPosition();
 
         // Clamp position to the visible screen area
-        float clampedX = std::max(0.0f, std::min(position.x * 50.0f, 800.0f)); // Assuming width = 800
-        float clampedY = std::max(0.0f, std::min(300.0f - position.y * 50.0f, 600.0f)); // Assuming height = 600
+        float clampedX = std::max(0.0f,
+                                  std::min(position.x * 50.0f, 800.0f)); // Assuming width = 800
+        float clampedY = std::max(0.0f,
+                                  std::min(300.0f - position.y * 50.0f,
+                                           600.0f)); // Assuming height = 600
 
         button->move(clampedX, clampedY);
     }
 }
 
-void Monkey::updatePhysics() {
+void Monkey::updatePhysics()
+{
     if (ropeJoint) {
         // Monkey is swinging; let physics handle the movement
         qDebug() << "Monkey is swinging on the rope.";
@@ -120,15 +127,18 @@ void Monkey::updatePhysics() {
     }
 }
 
-void Monkey::attachToRope(Rope* rope) {
+void Monkey::attachToRope(Rope *rope)
+{
     if (rope) {
         rope->attachMonkey(body);
         qDebug() << "Monkey attached to the rope!";
     }
 }
 
-bool Monkey::isNearRope(Rope *rope) const {
-    if (!rope) return false;
+bool Monkey::isNearRope(Rope *rope) const
+{
+    if (!rope)
+        return false;
 
     b2Vec2 monkeyPos = body->GetPosition();
     b2Vec2 ropePos = rope->getBody()->GetPosition();
@@ -136,18 +146,19 @@ bool Monkey::isNearRope(Rope *rope) const {
     return (monkeyPos - ropePos).Length() < 1.5f; // Adjust proximity threshold as needed
 }
 
-bool Monkey::overlapsWithRope(Rope* rope) const {
-    b2Body* ropeBody = rope->getBottomSegment();
-    if (!ropeBody) return false;
-
-
+bool Monkey::overlapsWithRope(Rope *rope) const
+{
+    b2Body *ropeBody = rope->getBottomSegment();
+    if (!ropeBody)
+        return false;
 
     b2Vec2 monkeyPosition = body->GetPosition();
     b2Vec2 ropePosition = ropeBody->GetPosition();
 
-    return std::abs(monkeyPosition.x - ropePosition.x) < 1.0f &&
-           std::abs(monkeyPosition.y - ropePosition.y) < 1.0f;
+    return std::abs(monkeyPosition.x - ropePosition.x) < 1.0f
+           && std::abs(monkeyPosition.y - ropePosition.y) < 1.0f;
 }
-b2Body* Monkey::getBody() const {
+b2Body *Monkey::getBody() const
+{
     return body;
 }

@@ -15,7 +15,7 @@ Rabbit::Rabbit(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosit
     boxShape.SetAsBox(1.0f, 1.0f); // Rabbit's physical size
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &boxShape;
-    fixtureDef.density = 1.0f; // Set density for proper physics
+    fixtureDef.density = 1.0f;  // Set density for proper physics
     fixtureDef.friction = 0.3f; // Add friction to avoid sliding
     body->CreateFixture(&fixtureDef);
 
@@ -38,7 +38,7 @@ void Rabbit::performAction()
 void Rabbit::jump()
 {
     if (body) {
-        b2Vec2 impulse(-2.5f, 20.0f); // Upward force
+        b2Vec2 impulse(-2.5f, 20.0f);                                    // Upward force
         body->ApplyLinearImpulse(impulse, body->GetWorldCenter(), true); // Apply impulse for jump
     }
 }
@@ -49,8 +49,11 @@ void Rabbit::updatePosition()
         b2Vec2 position = body->GetPosition();
 
         // Clamp position to prevent rabbit from going out of bounds
-        float clampedX = std::max(0.0f, std::min(position.x * 50.0f, 800.0f)); // Assuming width = 800
-        float clampedY = std::max(0.0f, std::min(300.0f - position.y * 50.0f, 600.0f)); // Assuming height = 600
+        float clampedX = std::max(0.0f,
+                                  std::min(position.x * 50.0f, 800.0f)); // Assuming width = 800
+        float clampedY = std::max(0.0f,
+                                  std::min(300.0f - position.y * 50.0f,
+                                           600.0f)); // Assuming height = 600
 
         button->move(clampedX, clampedY);
     }

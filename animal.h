@@ -1,9 +1,9 @@
 #ifndef ANIMAL_H
 #define ANIMAL_H
 
+#include <QObject>
 #include <QPushButton>
 #include <Box2D/Box2D.h>
-#include <QObject>
 
 class Animal : public QObject
 {
@@ -18,10 +18,10 @@ public:
 
     virtual void updatePhysics(); // New function
 
-    QPushButton* getButton() const; // Getter for button (used for dog and monkey)
+    QPushButton *getButton() const; // Getter for button (used for dog and monkey)
 
 protected:
-    QPushButton *button;// UI representation of the animal
+    QPushButton *button; // UI representation of the animal
     b2Body *body;        // Box2D physics body
     b2World *world;
 };

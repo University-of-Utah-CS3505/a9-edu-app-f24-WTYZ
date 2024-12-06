@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="pageRabbit">
      <property name="sizePolicy">
@@ -769,10 +769,10 @@ color: rgb(60, 60, 60);</string>
      <widget class="QPushButton" name="ropeButton">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>90</y>
-        <width>111</width>
-        <height>411</height>
+        <x>170</x>
+        <y>80</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -1066,6 +1066,252 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <string/>
       </property>
      </widget>
+     <widget class="QPushButton" name="ropeButton_2">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>120</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::StrongFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/images/obj_rope.png</normaloff>:/images/obj_rope.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="pixmap" stdset="0">
+       <pixmap/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ropeButton_3">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>160</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::StrongFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/images/obj_rope.png</normaloff>:/images/obj_rope.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="pixmap" stdset="0">
+       <pixmap/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ropeButton_4">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>200</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::StrongFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/images/obj_rope.png</normaloff>:/images/obj_rope.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="pixmap" stdset="0">
+       <pixmap/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ropeButton_5">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>240</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::StrongFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/images/obj_rope.png</normaloff>:/images/obj_rope.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="pixmap" stdset="0">
+       <pixmap/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ropeButton_6">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>280</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::StrongFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/images/obj_rope.png</normaloff>:/images/obj_rope.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="pixmap" stdset="0">
+       <pixmap/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ropeButton_7">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>320</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::StrongFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/images/obj_rope.png</normaloff>:/images/obj_rope.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="pixmap" stdset="0">
+       <pixmap/>
+      </property>
+     </widget>
      <zorder>bgMonkey</zorder>
      <zorder>hanziContainerRight_2</zorder>
      <zorder>monkeyButton</zorder>
@@ -1083,6 +1329,12 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <zorder>leftGifLabel_2</zorder>
      <zorder>rightGifLabel_2</zorder>
      <zorder>soundButton_2</zorder>
+     <zorder>ropeButton_2</zorder>
+     <zorder>ropeButton_3</zorder>
+     <zorder>ropeButton_4</zorder>
+     <zorder>ropeButton_5</zorder>
+     <zorder>ropeButton_6</zorder>
+     <zorder>ropeButton_7</zorder>
     </widget>
    </widget>
    <widget class="QPushButton" name="helpButton">
@@ -1233,7 +1485,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <x>0</x>
      <y>0</y>
      <width>801</width>
-     <height>33</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGame">

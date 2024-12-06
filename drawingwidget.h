@@ -1,9 +1,9 @@
 #ifndef DRAWINGWIDGET_H
 #define DRAWINGWIDGET_H
 
-#include <QWidget>
-#include <QVector>
 #include <QPoint>
+#include <QVector>
+#include <QWidget>
 
 class DrawingWidget : public QWidget
 {
@@ -21,8 +21,8 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event) override;
 
 private:
-    QVector<QPoint> currentStroke;       // 현재 획 저장
-    QVector<QVector<QPoint>> strokes;    // 모든 획 저장
+    QVector<QPoint> currentStroke;    // 현재 획 저장
+    QVector<QVector<QPoint>> strokes; // 모든 획 저장
 };
 
 #endif // DRAWINGWIDGET_H
