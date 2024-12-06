@@ -33,6 +33,7 @@ Monkey::Monkey(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosit
 
 Monkey::~Monkey()
 {
+    isDragging = false;
     if (body && world) {
         world->DestroyBody(body);
     }

@@ -53,8 +53,7 @@ MainWindow::MainWindow(QWidget *parent)
         ui->ropeButton_3,
         ui->ropeButton_4,
         ui->ropeButton_5,
-        ui->ropeButton_6,
-        ui->ropeButton_7
+        ui->ropeButton_6
     };
 
     // Validate that all buttons exist
@@ -380,8 +379,7 @@ void MainWindow::switchToMonkey()
         ui->ropeButton_3,
         ui->ropeButton_4,
         ui->ropeButton_5,
-        ui->ropeButton_6,
-        ui->ropeButton_7
+        ui->ropeButton_6
     };
 
     for (QPushButton *button : ropeButtons) {
