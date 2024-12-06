@@ -153,7 +153,8 @@ void MainWindow::initializeAnimal(Animal *&animal, QPushButton *button, int laye
                                 world,
                                 b2Vec2(initialPos.x() / 50.0f,
                                        (300 - initialPos.y()) / 50.0f
-                                           + 2.0f)); // Offset to avoid ground collision
+                                           + 2.0f),
+                                rope); // Offset to avoid ground collision
             button->setMouseTracking(true);
             monkey->getButton()->setStyleSheet("background: transparent; border: none;");
             qDebug() << "Monkey initialized at position:" << initialX << initialY + 2.0f;

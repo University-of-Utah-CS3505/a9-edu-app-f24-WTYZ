@@ -2,8 +2,8 @@
 #include <QDebug>
 #include <QMouseEvent>
 
-Monkey::Monkey(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition)
-    : Animal(uiButton, world, initialPosition)
+Monkey::Monkey(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition, Rope *rope)
+    : Animal(uiButton, world, initialPosition),rope(rope)
     , isDragging(false)
 {
     if (!world) {
@@ -44,8 +44,7 @@ void Monkey::performAction()
     qDebug() << "Monkey is performing an action!";
 }
 
-bool Monkey::eventFilter(QObject *watched, QEvent *event)
-{
+bool Monkey::eventFilter(QObject *watched, QEvent *event) {
     if (watched == button) {
         if (event->type() == QEvent::MouseButtonPress) {
             QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent *>(event);
@@ -67,12 +66,15 @@ bool Monkey::eventFilter(QObject *watched, QEvent *event)
 
                     // Update the Box2D body position
                     float newX = newPos.x() / 50.0f;
-                    float newY = (300 - newPos.y())
-                                 / 50.0f; // Adjust Y coordinate for UI to Box2D mapping
+                    float newY = (300 - newPos.y()) / 50.0f; // Adjust for UI-to-Box2D mapping
                     body->SetTransform(b2Vec2(newX, newY), body->GetAngle());
 
-                    qDebug() << "Monkey dragged to UI position:" << newPos
-                             << " | Physics position:" << newX << "," << newY;
+                    // If attached, adjust the rope bottom segment
+                    if (isAttachedToRope && ropeJoint) {
+                        b2Vec2 newAnchor(newX, newY);
+                        rope->getBottomSegment()->SetTransform(newAnchor, 0);
+                    }
+
                     return true;
                 }
             }
@@ -80,6 +82,12 @@ bool Monkey::eventFilter(QObject *watched, QEvent *event)
             QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent *>(event);
             if (mouseEvent && mouseEvent->button() == Qt::LeftButton && isDragging) {
                 isDragging = false;
+
+                // If not attached, attempt to attach
+                if (!isAttachedToRope && isNearRope(rope)) {
+                    attachToRope(rope);
+                }
+
                 qDebug() << "Monkey dragging ended.";
                 return true;
             }
@@ -128,23 +136,50 @@ void Monkey::updatePhysics()
     }
 }
 
-void Monkey::attachToRope(Rope *rope)
-{
-    if (rope) {
-        rope->attachMonkey(body);
-        qDebug() << "Monkey attached to the rope!";
+void Monkey::attachToRope(Rope *rope) {
+    if (!rope) {
+        qDebug() << "Error: Rope is null!";
+        return;
+    }
+
+    // If already attached, do nothing
+    if (isAttachedToRope) {
+        qDebug() << "Monkey is already attached to the rope.";
+        return;
+    }
+
+    b2Body *ropeBottomSegment = rope->getBottomSegment();
+    if (!ropeBottomSegment) {
+        qDebug() << "Error: Rope bottom segment is null!";
+        return;
+    }
+
+    // Create a RevoluteJoint to attach the monkey to the bottom of the rope
+    b2RevoluteJointDef jointDef;
+    jointDef.bodyA = ropeBottomSegment;
+    jointDef.bodyB = body; // Monkey's body
+    jointDef.localAnchorA.Set(0.0f, -0.3f); // Offset for the bottom of the rope
+    jointDef.localAnchorB.Set(0.0f, 0.5f);  // Offset for the monkey's body
+    jointDef.collideConnected = false;      // Prevent self-collision
+
+    ropeJoint = static_cast<b2RevoluteJoint *>(world->CreateJoint(&jointDef));
+    if (ropeJoint) {
+        isAttachedToRope = true; // Update attachment state
+        qDebug() << "Monkey successfully attached to the rope!";
+    } else {
+        qDebug() << "Error: Failed to attach Monkey to the rope!";
     }
 }
 
-bool Monkey::isNearRope(Rope *rope) const
-{
-    if (!rope)
-        return false;
+bool Monkey::isNearRope(Rope *rope) const {
+    if (!rope) return false;
 
     b2Vec2 monkeyPos = body->GetPosition();
-    b2Vec2 ropePos = rope->getBody()->GetPosition();
+    b2Vec2 ropeBottomPos = rope->getBottomSegment()->GetPosition();
 
-    return (monkeyPos - ropePos).Length() < 1.5f; // Adjust proximity threshold as needed
+    float distance = (monkeyPos - ropeBottomPos).Length();
+    qDebug() << "Distance from monkey to rope:" << distance;
+    return distance < 1.5f; // Adjust threshold as needed
 }
 
 bool Monkey::overlapsWithRope(Rope *rope) const

@@ -117,7 +117,7 @@ bool Rope::eventFilter(QObject* obj, QEvent* event) {
     return QObject::eventFilter(obj, event);
 }
 
-void Rope::attachMonkey(b2Body* monkeyBody) {
+void Rope::attachMonkey(b2Body *monkeyBody) {
     if (!monkeyBody) {
         qDebug() << "Error: Monkey body is null.";
         return;
@@ -129,18 +129,25 @@ void Rope::attachMonkey(b2Body* monkeyBody) {
         joint = nullptr;
     }
 
-    // Attach the monkey to the bottom segment of the rope
+    b2Body *bottomSegment = getBottomSegment();
+    if (!bottomSegment) {
+        qDebug() << "Error: Bottom segment of rope is null.";
+        return;
+    }
+
+    // Create joint
     b2RevoluteJointDef jointDef;
-    jointDef.bodyA = getBottomSegment();
+    jointDef.bodyA = bottomSegment;
     jointDef.bodyB = monkeyBody;
-    jointDef.localAnchorA.Set(0.0f, -0.3f); // Adjust attachment point
-    jointDef.localAnchorB.Set(0.0f, 0.5f);  // Adjust monkey's anchor point
+    jointDef.localAnchorA.Set(0.0f, -0.3f);
+    jointDef.localAnchorB.Set(0.0f, 0.5f);
+    jointDef.collideConnected = false;
 
     joint = world->CreateJoint(&jointDef);
     if (joint) {
         qDebug() << "Monkey successfully attached to the rope.";
     } else {
-        qDebug() << "Error: Failed to create joint for Monkey and Rope.";
+        qDebug() << "Error: Failed to attach Monkey to the rope.";
     }
 }
 
