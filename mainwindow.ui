@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="pageRabbit">
      <property name="sizePolicy">
@@ -76,33 +76,11 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="hanziContainerLeft">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>70</y>
-        <width>151</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <property name="mouseTracking">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="resources.qrc">:/images/strokeGuideBox.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="hanziContainerRight">
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>70</y>
+        <y>90</y>
         <width>151</width>
         <height>141</height>
        </rect>
@@ -123,7 +101,7 @@
         <x>260</x>
         <y>20</y>
         <width>151</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="mouseTracking">
@@ -148,7 +126,7 @@
         <x>580</x>
         <y>20</y>
         <width>181</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -171,7 +149,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
         <x>70</x>
         <y>20</y>
         <width>181</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -194,7 +172,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
         <x>420</x>
         <y>20</y>
         <width>151</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="mouseTracking">
@@ -213,27 +191,11 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="labelHanziAnimal">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>70</y>
-        <width>151</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: transparent;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="labelHanziVerb">
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>70</y>
+        <y>90</y>
         <width>151</width>
         <height>141</height>
        </rect>
@@ -248,10 +210,10 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <widget class="QLabel" name="translateChinese">
       <property name="geometry">
        <rect>
-        <x>580</x>
+        <x>630</x>
         <y>20</y>
-        <width>91</width>
-        <height>41</height>
+        <width>81</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -270,8 +232,8 @@ color: rgb(60, 60, 60);</string>
        <rect>
         <x>70</x>
         <y>20</y>
-        <width>91</width>
-        <height>41</height>
+        <width>181</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -283,28 +245,6 @@ color: rgb(60, 60, 60);</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelSound">
-      <property name="geometry">
-       <rect>
-        <x>730</x>
-        <y>30</y>
-        <width>21</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: transparent;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="resources.qrc">:/images/btn_sound.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="rabbitButton">
@@ -337,7 +277,58 @@ color: rgb(60, 60, 60);</string>
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>70</y>
+        <y>90</y>
+        <width>151</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent;</string>
+      </property>
+      <widget class="QLabel" name="labelHanziAnimal">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>151</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background: transparent;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="hanziContainerLeft">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>151</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="resources.qrc">:/images/strokeGuideBox.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="userInputRight" native="true">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>130</y>
         <width>151</width>
         <height>141</height>
        </rect>
@@ -346,34 +337,60 @@ color: rgb(60, 60, 60);</string>
        <string notr="true">background: transparent;</string>
       </property>
      </widget>
-     <widget class="QWidget" name="userInputRight" native="true">
+     <widget class="QLabel" name="leftGifLabel">
       <property name="geometry">
        <rect>
-        <x>420</x>
-        <y>70</y>
-        <width>151</width>
-        <height>141</height>
+        <x>360</x>
+        <y>30</y>
+        <width>41</width>
+        <height>31</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background: transparent;</string>
+      <property name="text">
+       <string>LHanzi</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="rightGifLabel">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>30</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>RHanzi</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="soundButton">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>20</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
      <zorder>bgRabbit</zorder>
      <zorder>hanziContainerRight</zorder>
      <zorder>labelHanziVerb</zorder>
-     <zorder>hanziContainerLeft</zorder>
      <zorder>labelContainerLeft</zorder>
      <zorder>setContainerRight</zorder>
      <zorder>setContainerLeft</zorder>
      <zorder>labelContainerRight</zorder>
-     <zorder>labelHanziAnimal</zorder>
      <zorder>translateChinese</zorder>
      <zorder>translateEnglish</zorder>
-     <zorder>labelSound</zorder>
      <zorder>rabbitButton</zorder>
      <zorder>userInputLeft</zorder>
      <zorder>userInputRight</zorder>
+     <zorder>leftGifLabel</zorder>
+     <zorder>rightGifLabel</zorder>
+     <zorder>soundButton</zorder>
     </widget>
     <widget class="QWidget" name="pageDog">
      <widget class="QLabel" name="bgDog">
@@ -421,32 +438,13 @@ color: rgb(60, 60, 60);</string>
        <pixmap/>
       </property>
      </widget>
-     <widget class="QLabel" name="hanziContainerLeft_3">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>70</y>
-        <width>151</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="resources.qrc">:/images/strokeGuideBox.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="setContainerLeft_3">
       <property name="geometry">
        <rect>
         <x>70</x>
         <y>20</y>
         <width>181</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -463,32 +461,13 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="hanziContainerRight_3">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>70</y>
-        <width>151</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="resources.qrc">:/images/strokeGuideBox.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="labelContainerRight_3">
       <property name="geometry">
        <rect>
         <x>420</x>
         <y>20</y>
         <width>151</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -507,7 +486,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
         <x>260</x>
         <y>20</y>
         <width>151</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -520,29 +499,13 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="labelHanziAnimal_3">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>70</y>
-        <width>151</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: transparent;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="setContainerRight_3">
       <property name="geometry">
        <rect>
         <x>580</x>
         <y>20</y>
         <width>181</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -562,10 +525,10 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <widget class="QLabel" name="translateChinese_3">
       <property name="geometry">
        <rect>
-        <x>580</x>
+        <x>630</x>
         <y>20</y>
-        <width>91</width>
-        <height>41</height>
+        <width>81</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -579,51 +542,13 @@ color: rgb(60, 60, 60);</string>
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="labelHanziVerb_3">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>70</y>
-        <width>151</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background:transparent;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelSound_3">
-      <property name="geometry">
-       <rect>
-        <x>730</x>
-        <y>30</y>
-        <width>21</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: transparent;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="resources.qrc">:/images/btn_sound.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="translateEnglish_3">
       <property name="geometry">
        <rect>
         <x>70</x>
         <y>20</y>
-        <width>91</width>
-        <height>41</height>
+        <width>181</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -641,7 +566,7 @@ color: rgb(60, 60, 60);</string>
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>70</y>
+        <y>80</y>
         <width>151</width>
         <height>141</height>
        </rect>
@@ -654,13 +579,138 @@ color: rgb(60, 60, 60);</string>
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>70</y>
+        <y>80</y>
         <width>151</width>
         <height>141</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background: transparent;</string>
+      </property>
+      <widget class="QLabel" name="labelHanziAnimal_3">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>-10</y>
+         <width>151</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background: transparent;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="leftGifLabel_3">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>30</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>LHanzi</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="rightGifLabel_3">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>30</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>RHanzi</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelHanziVerb_3">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>80</y>
+        <width>151</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="hanziContainerRight_3">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>80</y>
+        <width>151</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/images/strokeGuideBox.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="hanziContainerLeft_3">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>80</y>
+        <width>151</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/images/strokeGuideBox.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelHanziAnimal_4">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>80</y>
+        <width>151</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="soundButton_3">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>20</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -763,7 +813,7 @@ color: rgb(60, 60, 60);</string>
         <x>260</x>
         <y>20</y>
         <width>151</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -782,7 +832,7 @@ color: rgb(60, 60, 60);</string>
         <x>420</x>
         <y>20</y>
         <width>151</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -800,8 +850,8 @@ color: rgb(60, 60, 60);</string>
        <rect>
         <x>70</x>
         <y>20</y>
-        <width>91</width>
-        <height>41</height>
+        <width>181</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -819,7 +869,7 @@ color: rgb(60, 60, 60);</string>
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>70</y>
+        <y>80</y>
         <width>151</width>
         <height>141</height>
        </rect>
@@ -837,7 +887,7 @@ color: rgb(60, 60, 60);</string>
         <x>70</x>
         <y>20</y>
         <width>181</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -854,32 +904,13 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="hanziContainerLeft_2">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>70</y>
-        <width>151</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="resources.qrc">:/images/strokeGuideBox.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="translateChinese_2">
       <property name="geometry">
        <rect>
-        <x>580</x>
+        <x>630</x>
         <y>20</y>
-        <width>91</width>
-        <height>41</height>
+        <width>81</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -897,7 +928,7 @@ color: rgb(60, 60, 60);</string>
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>70</y>
+        <y>80</y>
         <width>151</width>
         <height>141</height>
        </rect>
@@ -912,51 +943,13 @@ color: rgb(60, 60, 60);</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="labelSound_2">
-      <property name="geometry">
-       <rect>
-        <x>730</x>
-        <y>30</y>
-        <width>21</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: transparent;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="resources.qrc">:/images/btn_sound.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelHanziAnimal_2">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>70</y>
-        <width>151</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: transparent;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="setContainerRight_2">
       <property name="geometry">
        <rect>
         <x>580</x>
         <y>20</y>
         <width>181</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -977,7 +970,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>70</y>
+        <y>80</y>
         <width>151</width>
         <height>141</height>
        </rect>
@@ -990,13 +983,87 @@ background-color: rgba(255, 255, 255, 0.3);</string>
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>70</y>
+        <y>80</y>
         <width>151</width>
         <height>141</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background: transparent;</string>
+      </property>
+      <widget class="QLabel" name="labelHanziAnimal_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>151</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background: transparent;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="hanziContainerLeft_2">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>80</y>
+        <width>151</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/images/strokeGuideBox.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="leftGifLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>30</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>LHanzi</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="rightGifLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>30</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>RHanzi</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="soundButton_2">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>20</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
      <zorder>bgMonkey</zorder>
@@ -1008,13 +1075,14 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <zorder>translateEnglish_2</zorder>
      <zorder>labelHanziVerb_2</zorder>
      <zorder>setContainerLeft_2</zorder>
-     <zorder>hanziContainerLeft_2</zorder>
      <zorder>translateChinese_2</zorder>
-     <zorder>labelSound_2</zorder>
-     <zorder>labelHanziAnimal_2</zorder>
      <zorder>setContainerRight_2</zorder>
      <zorder>userInputRight_2</zorder>
      <zorder>userInputLeft_2</zorder>
+     <zorder>hanziContainerLeft_2</zorder>
+     <zorder>leftGifLabel_2</zorder>
+     <zorder>rightGifLabel_2</zorder>
+     <zorder>soundButton_2</zorder>
     </widget>
    </widget>
    <widget class="QPushButton" name="helpButton">
@@ -1165,7 +1233,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <x>0</x>
      <y>0</y>
      <width>801</width>
-     <height>25</height>
+     <height>33</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGame">

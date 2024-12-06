@@ -4,7 +4,9 @@
 #include "rope.h"
 
 #include <QMouseEvent>
+#include <QLabel>
 #include <QDebug>
+#include <QMovie>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -31,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
     // UI connections and setup
     connections();
     settingScreenUI();
+    settingSounds();
 
     // Initialize global world update timer
     worldUpdateTimer = new QTimer(this);
@@ -93,6 +96,41 @@ MainWindow::~MainWindow()
 {
     delete world; // Clean up Box2D world
     delete ui;
+}
+
+void MainWindow::settingSounds()
+{
+    // Initialize Sound Button and Style
+
+    // Rabbit Sound Button
+    ui->soundButton->setStyleSheet("border: none; background-color: transparent;");
+    QPixmap pixmapSound(":/images/btn_sound.png");
+    QIcon iconSound(pixmapSound);
+    ui->soundButton->setIcon(iconSound);
+
+    rabbitSound = new QMediaPlayer(this);
+    QAudioOutput *rabbitAudioOutput = new QAudioOutput(this);
+    rabbitSound->setAudioOutput(rabbitAudioOutput);
+    rabbitSound->setSource(QUrl("qrc:/sounds/rabbitJumps_tu_zai_tiao.m4a"));
+
+    // Dog Sound Button
+    ui->soundButton_2->setStyleSheet("border: none; background-color: transparent;");
+    ui->soundButton_2->setIcon(iconSound);
+
+    dogSound = new QMediaPlayer(this);
+    QAudioOutput *dogAudioOutput = new QAudioOutput(this);
+    dogSound->setAudioOutput(dogAudioOutput);
+    dogSound->setSource(QUrl("qrc:/sounds/dogRuns_gou_zai_pao.m4a"));
+
+    // Monkey Sound Button
+    ui->soundButton_3->setStyleSheet("border: none; background-color: transparent;");
+    ui->soundButton_3->setIcon(iconSound);
+
+    monkeySound = new QMediaPlayer(this);
+    QAudioOutput *monkeyAudioOutput = new QAudioOutput(this);
+    monkeySound->setAudioOutput(monkeyAudioOutput);
+    monkeySound->setSource(QUrl("qrc:/sounds/monkeySwings_hou_zai_dang.m4a"));
+
 }
 
 void MainWindow::initializeAnimal(Animal *&animal, QPushButton *button, int layerIndex)
@@ -171,6 +209,20 @@ void MainWindow::connections()
     connect(ui->rabbitButton, &QPushButton::clicked, this, &MainWindow::handleRabbitClick);
 
     connect(ui->dogButton, &QPushButton::clicked, this, &MainWindow::handleDogClick);
+
+    connect(ui->soundButton, &QPushButton::clicked, this, [this]() {
+        if (rabbitSound) rabbitSound->play();
+    });
+
+    connect(ui->soundButton_2, &QPushButton::clicked, this, [this]() {
+        if (dogSound) dogSound->play();
+    });
+
+    connect(ui->soundButton_3, &QPushButton::clicked, this, [this]() {
+        if (monkeySound) monkeySound->play();
+    });
+
+
 }
 
 void MainWindow::updateWorld() {
@@ -224,6 +276,20 @@ void MainWindow::switchToRabbit()
         "background: transparent;"
         );
     ui->labelHanziVerb->setAlignment(Qt::AlignCenter);
+
+    ui->translateEnglish->setText("Rabbit Jumps");
+    ui->translateChinese->setText("兔跳");
+    ui->translateChinese->setStyleSheet("font-size: 16px;" "background:transparent;");
+
+    QMovie *leftMovie = new QMovie(":/animations/gif_rabbit_tu.gif");
+    ui->leftGifLabel->setScaledContents(true);
+    ui->leftGifLabel->setMovie(leftMovie);
+    leftMovie->start();
+
+    QMovie *rightMovie = new QMovie(":/animations/gif_run_tiao.gif");
+    ui->rightGifLabel->setScaledContents(true);
+    ui->rightGifLabel->setMovie(rightMovie);
+    rightMovie->start();
 }
 
 void MainWindow::handleRabbitClick()
@@ -271,6 +337,21 @@ void MainWindow::switchToDog()
         "background: transparent;"
         );
     ui->labelHanziVerb_3->setAlignment(Qt::AlignCenter);
+
+    ui->translateEnglish_3->setText("Dog Runs");
+    ui->translateChinese_3->setText("狗叫");
+    ui->translateChinese_3->setStyleSheet("font-size: 16px;" "background:transparent;");
+
+    QMovie *leftMovie = new QMovie(":/animations/gif_dog_gou.gif");
+    ui->leftGifLabel_3->setScaledContents(true);
+    ui->leftGifLabel_3->setMovie(leftMovie);
+    leftMovie->start();
+
+    QMovie *rightMovie = new QMovie(":/animations/gif_run_pao.gif");
+    ui->rightGifLabel_3->setScaledContents(true);
+    ui->rightGifLabel_3->setMovie(rightMovie);
+    rightMovie->start();
+
 }
 
 void MainWindow::handleDogClick()
@@ -328,6 +409,22 @@ void MainWindow::switchToMonkey() {
         "background: transparent;"
         );
     ui->labelHanziVerb_2->setAlignment(Qt::AlignCenter);
+
+    ui->translateEnglish_2->setText("Monkey Swings");
+    ui->translateChinese_2->setText("猴荡");
+    ui->translateEnglish_2->setStyleSheet("color: white;");
+    ui->translateChinese_2->setStyleSheet("color: white;" "font-size: 16px;" "background:transparent;");
+
+
+    QMovie *leftMovie = new QMovie(":/animations/gif_monkey_hou.gif");
+    ui->leftGifLabel_2->setScaledContents(true);
+    ui->leftGifLabel_2->setMovie(leftMovie);
+    leftMovie->start();
+
+    QMovie *rightMovie = new QMovie(":/animations/gif_swing_dang.gif");
+    ui->rightGifLabel_2->setScaledContents(true);
+    ui->rightGifLabel_2->setMovie(rightMovie);
+    rightMovie->start();
 }
 
 void MainWindow::hideAllAnimals()

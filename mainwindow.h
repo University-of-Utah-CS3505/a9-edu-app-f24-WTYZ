@@ -1,16 +1,22 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "helppage.h"
-#include "rabbit.h"
-#include <Box2D/Box2D.h>
+
 #include <QTimer>
 #include <QMainWindow>
 #include <QLabel>
+#include <QMovie>
+#include <QMediaPlayer>
+#include <QAudioOutput>
+#include <Box2D/Box2D.h>
+
 #include "dog.h"
 #include "monkey.h"
 #include "rope.h"
 #include "drawingwidget.h"
+#include "helppage.h"
+#include "rabbit.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -28,6 +34,7 @@ public:
 
     void connections();
     void settingScreenUI();
+    void settingSounds();
     void initializeAnimal(Animal *&animal, QPushButton *button, int layerIndex);
 
 private slots:
@@ -44,7 +51,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    b2World *world = nullptr;          // Box2D world
+    b2World *world = nullptr;           // Box2D world
     QTimer *worldUpdateTimer = nullptr; // Global physics timer
 
     b2Body *groundBody = nullptr;
@@ -55,6 +62,10 @@ private:
     Monkey *monkey = nullptr;          // Monkey object
     Rope *rope;
     QPushButton *ropeButton;
+
+    QMediaPlayer *rabbitSound = nullptr;    // Rabbit sound
+    QMediaPlayer *dogSound = nullptr;       // Dog sound
+    QMediaPlayer *monkeySound = nullptr;    // Monkey sound
 };
 
 #endif // MAINWINDOW_H
