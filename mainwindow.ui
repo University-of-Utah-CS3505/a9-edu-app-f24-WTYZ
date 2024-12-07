@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="pageRabbit">
      <property name="sizePolicy">
@@ -407,7 +407,7 @@ color: rgb(60, 60, 60);</string>
        <rect>
         <x>320</x>
         <y>40</y>
-        <width>21</width>
+        <width>31</width>
         <height>21</height>
        </rect>
       </property>
@@ -415,15 +415,15 @@ color: rgb(60, 60, 60);</string>
        <string notr="true">background: transparent; color:black; font-size:18px;</string>
       </property>
       <property name="text">
-       <string>兔 </string>
+       <string>  兔 </string>
       </property>
      </widget>
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>480</x>
         <y>40</y>
-        <width>21</width>
+        <width>31</width>
         <height>21</height>
        </rect>
       </property>
@@ -431,29 +431,13 @@ color: rgb(60, 60, 60);</string>
        <string notr="true">background: transparent; color:black; font-size:18px;</string>
       </property>
       <property name="text">
-       <string>跳</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_15">
-      <property name="geometry">
-       <rect>
-        <x>490</x>
-        <y>20</y>
-        <width>41</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: transparent; color:black; font-size:12px;</string>
-      </property>
-      <property name="text">
-       <string>dàng</string>
+       <string>  跳</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_16">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>320</x>
         <y>20</y>
         <width>41</width>
         <height>31</height>
@@ -463,7 +447,7 @@ color: rgb(60, 60, 60);</string>
        <string notr="true">background: transparent; color:black; font-size:12px;</string>
       </property>
       <property name="text">
-       <string>dàng</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="label_17">
@@ -498,6 +482,54 @@ color: rgb(60, 60, 60);</string>
        <string>Jumps</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>20</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>   tù</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>20</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string> dàng</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>80</y>
+        <width>171</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent; color: black;</string>
+      </property>
+      <property name="text">
+       <string>*在(zài) means &quot;doing&quot;</string>
+      </property>
+     </widget>
      <zorder>bgRabbit</zorder>
      <zorder>hanziContainerRight</zorder>
      <zorder>labelHanziVerb</zorder>
@@ -519,10 +551,12 @@ color: rgb(60, 60, 60);</string>
      <zorder>drawingWidget_rabbit</zorder>
      <zorder>label_13</zorder>
      <zorder>label_14</zorder>
-     <zorder>label_15</zorder>
      <zorder>label_16</zorder>
      <zorder>label_17</zorder>
      <zorder>label_18</zorder>
+     <zorder>label_19</zorder>
+     <zorder>label_20</zorder>
+     <zorder>label_15</zorder>
     </widget>
     <widget class="QWidget" name="pageDog">
      <widget class="QLabel" name="bgDog">
@@ -664,8 +698,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-color: rgb(60, 60, 60);</string>
+       <string notr="true">background-color: transparent; color: black;</string>
       </property>
       <property name="text">
        <string>CHINESE</string>
@@ -860,7 +893,7 @@ color: rgb(60, 60, 60);</string>
        <rect>
         <x>320</x>
         <y>40</y>
-        <width>21</width>
+        <width>31</width>
         <height>21</height>
        </rect>
       </property>
@@ -868,15 +901,15 @@ color: rgb(60, 60, 60);</string>
        <string notr="true">background: transparent; color:black; font-size:18px;</string>
       </property>
       <property name="text">
-       <string>狗</string>
+       <string>  狗</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>470</x>
+        <x>480</x>
         <y>30</y>
-        <width>21</width>
+        <width>31</width>
         <height>41</height>
        </rect>
       </property>
@@ -884,7 +917,7 @@ color: rgb(60, 60, 60);</string>
        <string notr="true">background: transparent; color:black; font-size:18px;</string>
       </property>
       <property name="text">
-       <string>跑</string>
+       <string>  跑</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_3">
@@ -900,13 +933,13 @@ color: rgb(60, 60, 60);</string>
        <string notr="true">background: transparent; color:black; font-size:12px;</string>
       </property>
       <property name="text">
-       <string>gǒu </string>
+       <string>  gǒu </string>
       </property>
      </widget>
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>470</x>
+        <x>480</x>
         <y>20</y>
         <width>41</width>
         <height>31</height>
@@ -916,7 +949,7 @@ color: rgb(60, 60, 60);</string>
        <string notr="true">background: transparent; color:black; font-size:12px;</string>
       </property>
       <property name="text">
-       <string>pǎo</string>
+       <string>  pǎo</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_5">
@@ -949,6 +982,22 @@ color: rgb(60, 60, 60);</string>
       </property>
       <property name="text">
        <string>Runs</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>80</y>
+        <width>171</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent; color: black;</string>
+      </property>
+      <property name="text">
+       <string>*在(zài) means &quot;doing&quot;</string>
       </property>
      </widget>
     </widget>
@@ -1497,9 +1546,9 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <widget class="QLabel" name="label_8">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>480</x>
         <y>40</y>
-        <width>21</width>
+        <width>31</width>
         <height>21</height>
        </rect>
       </property>
@@ -1507,13 +1556,13 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <string notr="true">background: transparent; color:black; font-size:18px;</string>
       </property>
       <property name="text">
-       <string>荡</string>
+       <string>  荡</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>480</x>
         <y>20</y>
         <width>41</width>
         <height>31</height>
@@ -1523,13 +1572,13 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <string notr="true">background: transparent; color:black; font-size:12px;</string>
       </property>
       <property name="text">
-       <string>dàng</string>
+       <string> dàng</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>320</x>
         <y>20</y>
         <width>41</width>
         <height>31</height>
@@ -1539,7 +1588,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <string notr="true">background: transparent; color:black; font-size:12px;</string>
       </property>
       <property name="text">
-       <string>hóu</string>
+       <string>  hóu</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_11">
@@ -1574,6 +1623,22 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <string>Swing</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>80</y>
+        <width>171</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent; </string>
+      </property>
+      <property name="text">
+       <string>*在(zài) means &quot;doing&quot;</string>
+      </property>
+     </widget>
      <zorder>bgMonkey</zorder>
      <zorder>hanziContainerRight_2</zorder>
      <zorder>monkeyButton</zorder>
@@ -1603,6 +1668,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <zorder>label_10</zorder>
      <zorder>label_11</zorder>
      <zorder>label_12</zorder>
+     <zorder>label_21</zorder>
     </widget>
    </widget>
    <widget class="QPushButton" name="helpButton">

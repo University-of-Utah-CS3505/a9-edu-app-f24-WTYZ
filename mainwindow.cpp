@@ -286,7 +286,7 @@ void MainWindow::switchToRabbit()
     }
 
     ui->translateEnglish->setText("Rabbit Jumps");
-    ui->translateChinese->setText("兔跳");
+    ui->translateChinese->setText("兔在跳");
     ui->translateChinese->setStyleSheet("color: black;" "font-size: 16px;" "background:transparent;");
 
     QMovie *leftMovie = new QMovie(":/animations/gif_rabbit_tu.gif");
@@ -332,7 +332,7 @@ void MainWindow::switchToDog()
     }
 
     ui->translateEnglish_3->setText("Dog Runs");
-    ui->translateChinese_3->setText("狗跑");
+    ui->translateChinese_3->setText("狗在跑");
     ui->translateChinese_3->setStyleSheet("color: black;" "font-size: 16px;" "background:transparent;");
 
     QMovie *leftMovie = new QMovie(":/animations/gif_dog_gou.gif");
@@ -403,7 +403,7 @@ void MainWindow::switchToMonkey()
     }
 
     ui->translateEnglish_2->setText("Monkey Swings");
-    ui->translateChinese_2->setText("猴荡");
+    ui->translateChinese_2->setText("猴在荡");
     ui->translateEnglish_2->setStyleSheet("color: white;");
     ui->translateChinese_2->setStyleSheet("color: white;" "font-size: 16px;" "background:transparent;");
 
