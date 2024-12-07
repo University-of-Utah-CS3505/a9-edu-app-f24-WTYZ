@@ -101,7 +101,7 @@ void MainWindow::settingSounds()
     dogSound = new QMediaPlayer(this);
     QAudioOutput *dogAudioOutput = new QAudioOutput(this);
     dogSound->setAudioOutput(dogAudioOutput);
-    dogSound->setSource(QUrl("qrc:/sounds/dogRuns_gou_zai_pao.m4a"));
+    dogSound->setSource(QUrl("qrc:/sounds/dogBarks_gou_zai_jiao.m4a"));
 
     // Monkey Sound Button
     ui->soundButton_2->setStyleSheet("border: none; background-color: transparent;");

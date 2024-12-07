@@ -16,10 +16,10 @@
     </qresource>
     <qresource prefix="/sounds">
         <file>dogBark.mp3</file>
-        <file>dogRuns_gou_zai_pao.m4a</file>
         <file>monkeySwings_hou_zai_dang.m4a</file>
         <file>rabbitJumps_tu_zai_tiao.m4a</file>
         <file>dog_bark.wav</file>
+        <file>dogBarks_gou_zai_jiao.m4a</file>
     </qresource>
     <qresource prefix="/animations">
         <file>gif_dog_gou.gif</file>
