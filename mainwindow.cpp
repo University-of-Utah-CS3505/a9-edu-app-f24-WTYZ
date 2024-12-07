@@ -96,29 +96,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::playAnimalGifOnce(QLabel *gifLabel, const QString &gifPath, int durationMs)
-{
-    QMovie *animalGifMovie = new QMovie(gifPath, QByteArray(), this);
-    gifLabel->setMovie(animalGifMovie);
-    gifLabel->setScaledContents(true);
-
-    QTimer *timer = new QTimer(this);
-    timer->setSingleShot(true);
-
-    QGraphicsOpacityEffect *opacityEffect = new QGraphicsOpacityEffect(gifLabel);
-    opacityEffect->setOpacity(0.5);
-    gifLabel->setGraphicsEffect(opacityEffect);
-
-    connect(timer, &QTimer::timeout, this, [animalGifMovie, timer]() {
-        animalGifMovie->stop();
-        timer->deleteLater();
-    });
-
-    animalGifMovie->start();
-    gifLabel->setVisible(true);
-    timer->start(durationMs);
-}
-
 void MainWindow::enableAnimalDrawing(DrawingWidget *drawingWidget)
 {
     ui->drawingWidget_rabbit->raise();
@@ -281,6 +258,54 @@ void MainWindow::updateWorld() {
     }
 }
 
+void MainWindow::playAnimalGifOnce(QLabel *gifLabel, const QString &gifPath, int durationMs)
+{
+    QMovie *animalGifMovie = new QMovie(gifPath, QByteArray(), this);
+    gifLabel->setMovie(animalGifMovie);
+    gifLabel->setScaledContents(true);
+
+    QTimer *timer = new QTimer(this);
+    timer->setSingleShot(true);
+
+    QGraphicsOpacityEffect *opacityEffect = new QGraphicsOpacityEffect(gifLabel);
+    opacityEffect->setOpacity(0.5);
+    gifLabel->setGraphicsEffect(opacityEffect);
+
+    connect(timer, &QTimer::timeout, this, [animalGifMovie, timer]() {
+        animalGifMovie->stop();
+        timer->deleteLater();
+    });
+
+    animalGifMovie->start();
+    gifLabel->setVisible(true);
+    timer->start(durationMs);
+}
+
+void playGif(QLabel* label, const QString& gifPath, int duration, const QSize& size) {
+    QMovie* animation = new QMovie(gifPath);
+    animation->setScaledSize(size);
+    label->setMovie(animation);
+    animation->start();
+
+    QTimer::singleShot(duration, [animation, label]() {
+        animation->stop();
+        animation->deleteLater();
+        label->clear();
+        label->setStyleSheet("background: transparent;");
+    });
+}
+
+void playBothGif(QLabel* label1, const QString& gifPath1, int duration1,
+                          const QSize& size1,
+                          QLabel* label2, const QString& gifPath2, int duration2,
+                          const QSize& size2) {
+    playGif(label1, gifPath1, duration1, size1);
+
+    QTimer::singleShot(duration1, [=]() {
+        playGif(label2, gifPath2, duration2, size2);
+    });
+}
+
 void MainWindow::switchToRabbit()
 {
     currentAnimal = rabbit;
@@ -310,9 +335,11 @@ void MainWindow::switchToRabbit()
     rightMovie->start();
 
 
-    //Main Containter Gif & User Input Drawing
-    playAnimalGifOnce(ui->gifContainerRight_rabbit, ":/animations/gif_run_tiao.gif", 10);
-    playAnimalGifOnce(ui->gifContainerLeft_rabbit, ":/animations/gif_rabbit_tu.gif", 10);
+    //Main Containter Gif & User Input Drawing 
+    playBothGif(
+        ui->gifContainerLeft_rabbit, ":/animations/gif_rabbit_tu.gif", 5700, QSize(150, 150), // 첫 번째 GIF
+        ui->gifContainerRight_rabbit, ":/animations/gif_run_tiao.gif", 6200, QSize(150, 150)  // 두 번째 GIF
+    );
     enableAnimalDrawing(ui->drawingWidget_rabbit);
 }
 
@@ -357,9 +384,9 @@ void MainWindow::switchToDog()
     rightMovie->start();
 
     //Main Containter Gif & User Input Drawing
-    playAnimalGifOnce(ui->gifContainerRight_dog, ":/animations/gif_run_pao.gif", 10);
-    playAnimalGifOnce(ui->gifContainerLeft_dog, ":/animations/gif_dog_gou.gif", 10);
-    enableAnimalDrawing(ui->drawingWidget_dog);
+    // playAnimalGifOnce(ui->gifContainerRight_dog, ":/animations/gif_run_pao.gif", 10);
+    // playAnimalGifOnce(ui->gifContainerLeft_dog, ":/animations/gif_dog_gou.gif", 10);
+    // enableAnimalDrawing(ui->drawingWidget_dog);
 
 }
 
@@ -416,9 +443,9 @@ void MainWindow::switchToMonkey() {
     rightMovie->start();
 
     //Main Containter Gif & User Input Drawing
-    playAnimalGifOnce(ui->gifContainerRight_monkey, ":/animations/gif_swing_dang.gif", 10);
-    playAnimalGifOnce(ui->gifContainerLeft_monkey, ":/animations/gif_monkey_hou.gif", 10);
-    enableAnimalDrawing(ui->drawingWidget_monkey);
+    // playAnimalGifOnce(ui->gifContainerRight_monkey, ":/animations/gif_swing_dang.gif", 10);
+    // playAnimalGifOnce(ui->gifContainerLeft_monkey, ":/animations/gif_monkey_hou.gif", 10);
+    // enableAnimalDrawing(ui->drawingWidget_monkey);
 }
 
 void MainWindow::hideAllAnimals()
