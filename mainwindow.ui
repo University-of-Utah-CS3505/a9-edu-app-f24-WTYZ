@@ -1639,6 +1639,47 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <string>*在(zài) means &quot;doing&quot;</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="ropeButton_6">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>280</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::StrongFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/images/obj_rope.png</normaloff>:/images/obj_rope.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="pixmap" stdset="0">
+       <pixmap/>
+      </property>
+     </widget>
      <zorder>bgMonkey</zorder>
      <zorder>hanziContainerRight_2</zorder>
      <zorder>monkeyButton</zorder>
@@ -1669,6 +1710,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <zorder>label_11</zorder>
      <zorder>label_12</zorder>
      <zorder>label_21</zorder>
+     <zorder>ropeButton_6</zorder>
     </widget>
    </widget>
    <widget class="QPushButton" name="helpButton">
@@ -1803,7 +1845,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <x>0</x>
      <y>0</y>
      <width>801</width>
-     <height>33</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGame">

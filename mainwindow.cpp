@@ -53,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent)
         ui->ropeButton_3,
         ui->ropeButton_4,
         ui->ropeButton_5,
+        ui->ropeButton_6
     };
 
     // Validate that all buttons exist
@@ -71,7 +72,6 @@ MainWindow::MainWindow(QWidget *parent)
     initializeAnimal(reinterpret_cast<Animal *&>(rabbit), ui->rabbitButton, 0);
     initializeAnimal(reinterpret_cast<Animal *&>(dog), ui->dogButton, 1);
     initializeAnimal(reinterpret_cast<Animal *&>(monkey), ui->monkeyButton, 2);
-    hideAllAnimals();
     switchToRabbit();
 }
 
@@ -239,27 +239,24 @@ void MainWindow::updateWorld()
     }
 }
 
-void MainWindow::playAnimalGifOnce(QLabel *gifLabel, const QString &gifPath, int durationMs)
+void MainWindow::playDrawingBoxGif(QLabel *gifLabel, const QString &gifPath)
 {
     QMovie *animalGifMovie = new QMovie(gifPath, QByteArray(), this);
     gifLabel->setMovie(animalGifMovie);
     gifLabel->setScaledContents(true);
 
-    QTimer *timer = new QTimer(this);
-    timer->setSingleShot(true);
-
     QGraphicsOpacityEffect *opacityEffect = new QGraphicsOpacityEffect(gifLabel);
     opacityEffect->setOpacity(0.5);
     gifLabel->setGraphicsEffect(opacityEffect);
 
-    connect(timer, &QTimer::timeout, this, [animalGifMovie, timer]() {
-        animalGifMovie->stop();
-        timer->deleteLater();
+    connect(animalGifMovie, &QMovie::frameChanged, this, [animalGifMovie]() {
+        if (animalGifMovie->currentFrameNumber() == animalGifMovie->frameCount() - 1) {
+            animalGifMovie->stop();
+        }
     });
 
     animalGifMovie->start();
     gifLabel->setVisible(true);
-    timer->start(durationMs);
 }
 
 void MainWindow::enableAnimalDrawing(DrawingWidget *drawingWidget)
@@ -275,7 +272,6 @@ void MainWindow::enableAnimalDrawing(DrawingWidget *drawingWidget)
 void MainWindow::switchToRabbit()
 {
     currentAnimal = rabbit;
-    hideAllAnimals();
     updateGroundPosition(-2.0f, 200.0f, 0.5f);
 
     ui->btnRabbit->setStyleSheet("background-color: #2685E4; border-radius: 25px;");
@@ -301,8 +297,8 @@ void MainWindow::switchToRabbit()
     ui->rightGifLabel->setMovie(rightMovie);
     rightMovie->start();
     //Main Containter Gif & User Input Drawing
-    playAnimalGifOnce(ui->gifContainerRight_rabbit, ":/animations/gif_run_tiao.gif", 5800);
-    playAnimalGifOnce(ui->gifContainerLeft_rabbit, ":/animations/gif_rabbit_tu.gif", 4600);
+    playDrawingBoxGif(ui->gifContainerRight_rabbit, ":/animations/gif_run_tiao.gif");
+    playDrawingBoxGif(ui->gifContainerLeft_rabbit, ":/animations/gif_rabbit_tu.gif");
     enableAnimalDrawing(ui->drawingWidget_rabbit);
 }
 
@@ -318,11 +314,10 @@ void MainWindow::handleRabbitClick()
 void MainWindow::switchToDog()
 {
     currentAnimal = dog;
-    hideAllAnimals();
     updateGroundPosition(-2.0f, 200.0f, 0.5f);
 
     ui->btnRabbit->setStyleSheet("background-color: white; border-radius: 25px;");
-    ui->btnDog->setStyleSheet("background-color: #866839; border-radius: 25px;");
+    ui->btnDog->setStyleSheet("background-color: white; border-radius: 25px;");
     ui->btnMonkey->setStyleSheet("background-color: white; border-radius: 25px;");
     ui->stackedWidgetBackground->setCurrentIndex(1);
 
@@ -348,8 +343,8 @@ void MainWindow::switchToDog()
     rightMovie->start();
 
     //Main Containter Gif & User Input Drawing
-    playAnimalGifOnce(ui->gifContainerRight_dog, ":/animations/gif_run_pao.gif", 5200);
-    playAnimalGifOnce(ui->gifContainerLeft_dog, ":/animations/gif_dog_gou.gif", 4800);
+    playDrawingBoxGif(ui->gifContainerRight_dog, ":/animations/gif_run_pao.gif");
+    playDrawingBoxGif(ui->gifContainerLeft_dog, ":/animations/gif_dog_gou.gif");
     enableAnimalDrawing(ui->drawingWidget_dog);
 }
 
@@ -365,7 +360,6 @@ void MainWindow::handleDogClick()
 void MainWindow::switchToMonkey()
 {
     currentAnimal = monkey;
-    hideAllAnimals();
     monkey->getButton()->show();
 
     updateGroundPosition(-3.0f, 200.0f, 0.5f);
@@ -395,6 +389,7 @@ void MainWindow::switchToMonkey()
         ui->ropeButton_3,
         ui->ropeButton_4,
         ui->ropeButton_5,
+        ui->ropeButton_6
     };
 
     for (QPushButton *button : ropeButtons) {
@@ -420,22 +415,9 @@ void MainWindow::switchToMonkey()
     ui->rightGifLabel_2->setMovie(rightMovie);
     rightMovie->start();
     //Main Containter Gif & User Input Drawing
-    playAnimalGifOnce(ui->gifContainerRight_monkey, ":/animations/gif_swing_dang.gif", 5200);
-    playAnimalGifOnce(ui->gifContainerLeft_monkey, ":/animations/gif_monkey_hou.gif", 5500);
+    playDrawingBoxGif(ui->gifContainerRight_monkey, ":/animations/gif_swing_dang.gif");
+    playDrawingBoxGif(ui->gifContainerLeft_monkey, ":/animations/gif_monkey_hou.gif");
     enableAnimalDrawing(ui->drawingWidget_monkey);
-}
-
-void MainWindow::hideAllAnimals()
-{
-    if (rabbit && rabbit->getButton()) {
-        rabbit->getButton()->hide();
-    }
-    if (dog && dog->getButton()) {
-        dog->getButton()->hide();
-    }
-    if (monkey && monkey->getButton()) {
-        monkey->getButton()->hide();
-    }
 }
 
 void MainWindow::showHelpPage()

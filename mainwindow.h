@@ -37,7 +37,7 @@ public:
     void settingSounds();
     void initializeAnimal(Animal *&animal, QPushButton *button, int layerIndex);
 
-    void playAnimalGifOnce(QLabel *gifLabel, const QString &gifPath, int time);
+    void playDrawingBoxGif(QLabel *gifLabel, const QString &gifPath);
     void enableAnimalDrawing(DrawingWidget *drawingWidget);
 
 private slots:
@@ -46,7 +46,6 @@ private slots:
     void switchToMonkey();
     void switchToDog();
     void showHelpPage();
-    void hideAllAnimals();
     void handleRabbitClick();
     void handleDogClick();
 
