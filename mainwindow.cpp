@@ -311,8 +311,8 @@ void MainWindow::switchToRabbit()
 
 
     //Main Containter Gif & User Input Drawing
-    playAnimalGifOnce(ui->gifContainerRight_rabbit, ":/animations/gif_run_tiao.gif", 10);
-    playAnimalGifOnce(ui->gifContainerLeft_rabbit, ":/animations/gif_rabbit_tu.gif", 10);
+    playAnimalGifOnce(ui->gifContainerRight_rabbit, ":/animations/gif_run_tiao.gif", 5500);
+    playAnimalGifOnce(ui->gifContainerLeft_rabbit, ":/animations/gif_rabbit_tu.gif", 4800);
     enableAnimalDrawing(ui->drawingWidget_rabbit);
 }
 
