@@ -299,8 +299,8 @@ void MainWindow::switchToRabbit()
     ui->rightGifLabel->setMovie(rightMovie);
     rightMovie->start();
     //Main Containter Gif & User Input Drawing
-    playAnimalGifOnce(ui->gifContainerRight_rabbit, ":/animations/gif_run_tiao.gif", 10);
-    playAnimalGifOnce(ui->gifContainerLeft_rabbit, ":/animations/gif_rabbit_tu.gif", 10);
+    playAnimalGifOnce(ui->gifContainerRight_rabbit, ":/animations/gif_run_tiao.gif", 6000);
+    playAnimalGifOnce(ui->gifContainerLeft_rabbit, ":/animations/gif_rabbit_tu.gif", 5000);
     enableAnimalDrawing(ui->drawingWidget_rabbit);
 }
 
@@ -346,8 +346,8 @@ void MainWindow::switchToDog()
     rightMovie->start();
 
     //Main Containter Gif & User Input Drawing
-    playAnimalGifOnce(ui->gifContainerRight_dog, ":/animations/gif_run_pao.gif", 5800);
-    playAnimalGifOnce(ui->gifContainerLeft_dog, ":/animations/gif_dog_gou.gif", 5500);
+    playAnimalGifOnce(ui->gifContainerRight_dog, ":/animations/gif_run_pao.gif", 10);
+    playAnimalGifOnce(ui->gifContainerLeft_dog, ":/animations/gif_dog_gou.gif", 10);
     enableAnimalDrawing(ui->drawingWidget_dog);
 }
 
@@ -418,8 +418,8 @@ void MainWindow::switchToMonkey()
     ui->rightGifLabel_2->setMovie(rightMovie);
     rightMovie->start();
     //Main Containter Gif & User Input Drawing
-    playAnimalGifOnce(ui->gifContainerRight_monkey, ":/animations/gif_swing_dang.gif", 10);
-    playAnimalGifOnce(ui->gifContainerLeft_monkey, ":/animations/gif_monkey_hou.gif", 10);
+    playAnimalGifOnce(ui->gifContainerRight_monkey, ":/animations/gif_swing_dang.gif", 5800);
+    playAnimalGifOnce(ui->gifContainerLeft_monkey, ":/animations/gif_monkey_hou.gif", 5500);
     enableAnimalDrawing(ui->drawingWidget_monkey);
 }
 

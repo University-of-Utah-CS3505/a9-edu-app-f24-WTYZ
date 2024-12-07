@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="pageRabbit">
      <property name="sizePolicy">
@@ -402,6 +402,102 @@ color: rgb(60, 60, 60);</string>
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>40</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:18px;</string>
+      </property>
+      <property name="text">
+       <string>兔 </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>40</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:18px;</string>
+      </property>
+      <property name="text">
+       <string>跳</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>20</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>dàng</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>20</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>dàng</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>30</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>Rabbit</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>30</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>Jumps</string>
+      </property>
+     </widget>
      <zorder>bgRabbit</zorder>
      <zorder>hanziContainerRight</zorder>
      <zorder>labelHanziVerb</zorder>
@@ -421,6 +517,12 @@ color: rgb(60, 60, 60);</string>
      <zorder>gifContainerLeft_rabbit</zorder>
      <zorder>gifContainerRight_rabbit</zorder>
      <zorder>drawingWidget_rabbit</zorder>
+     <zorder>label_13</zorder>
+     <zorder>label_14</zorder>
+     <zorder>label_15</zorder>
+     <zorder>label_16</zorder>
+     <zorder>label_17</zorder>
+     <zorder>label_18</zorder>
     </widget>
     <widget class="QWidget" name="pageDog">
      <widget class="QLabel" name="bgDog">
@@ -751,6 +853,102 @@ color: rgb(60, 60, 60);</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>40</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:18px;</string>
+      </property>
+      <property name="text">
+       <string>狗</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>30</y>
+        <width>21</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:18px;</string>
+      </property>
+      <property name="text">
+       <string>跑</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>20</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>gǒu </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>20</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>pǎo</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>30</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>Dog</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>30</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>Runs</string>
       </property>
      </widget>
     </widget>
@@ -1280,6 +1478,102 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>40</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:18px;</string>
+      </property>
+      <property name="text">
+       <string>猴</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>40</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:18px;</string>
+      </property>
+      <property name="text">
+       <string>荡</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>20</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>dàng</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>20</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>hóu</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>30</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>Monkey</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>30</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent; color:black; font-size:12px;</string>
+      </property>
+      <property name="text">
+       <string>Swing</string>
+      </property>
+     </widget>
      <zorder>bgMonkey</zorder>
      <zorder>hanziContainerRight_2</zorder>
      <zorder>monkeyButton</zorder>
@@ -1303,6 +1597,12 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <zorder>clearButton_monkey</zorder>
      <zorder>gifContainerLeft_monkey</zorder>
      <zorder>gifContainerRight_monkey</zorder>
+     <zorder>label_7</zorder>
+     <zorder>label_8</zorder>
+     <zorder>label_9</zorder>
+     <zorder>label_10</zorder>
+     <zorder>label_11</zorder>
+     <zorder>label_12</zorder>
     </widget>
    </widget>
    <widget class="QPushButton" name="helpButton">
