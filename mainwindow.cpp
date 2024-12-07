@@ -96,9 +96,11 @@ void MainWindow::settingSounds()
     rabbitSound->setAudioOutput(rabbitAudioOutput);
     rabbitSound->setSource(QUrl("qrc:/sounds/rabbitJumps_tu_zai_tiao.m4a"));
 
+
+
     // Dog Sound Button
-    ui->soundButton_2->setStyleSheet("border: none; background-color: transparent;");
-    ui->soundButton_2->setIcon(iconSound);
+    ui->soundButton_3->setStyleSheet("border: none; background-color: transparent;");
+    ui->soundButton_3->setIcon(iconSound);
 
     dogSound = new QMediaPlayer(this);
     QAudioOutput *dogAudioOutput = new QAudioOutput(this);
@@ -106,8 +108,8 @@ void MainWindow::settingSounds()
     dogSound->setSource(QUrl("qrc:/sounds/dogRuns_gou_zai_pao.m4a"));
 
     // Monkey Sound Button
-    ui->soundButton_3->setStyleSheet("border: none; background-color: transparent;");
-    ui->soundButton_3->setIcon(iconSound);
+    ui->soundButton_2->setStyleSheet("border: none; background-color: transparent;");
+    ui->soundButton_2->setIcon(iconSound);
 
     monkeySound = new QMediaPlayer(this);
     QAudioOutput *monkeyAudioOutput = new QAudioOutput(this);
@@ -203,9 +205,9 @@ void MainWindow::connections()
     // Connect Sounds
     connect(ui->soundButton, &QPushButton::clicked, this, [this]() {
         if (rabbitSound) rabbitSound->play();});
-    connect(ui->soundButton_2, &QPushButton::clicked, this, [this]() {
-        if (dogSound) dogSound->play();});
     connect(ui->soundButton_3, &QPushButton::clicked, this, [this]() {
+        if (dogSound) dogSound->play();});
+    connect(ui->soundButton_2, &QPushButton::clicked, this, [this]() {
         if (monkeySound) monkeySound->play();});
     // Connect Erase Button
     connect(ui->clearButton_rabbit, &QPushButton::clicked, this, [this]() {
