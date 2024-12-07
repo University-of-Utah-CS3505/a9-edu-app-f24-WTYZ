@@ -285,6 +285,7 @@ void MainWindow::switchToRabbit()
 
     ui->translateEnglish->setText("Rabbit Jumps");
     ui->translateChinese->setText("兔在跳");
+    ui->translateEnglish->setStyleSheet("color: black;" "font-weight: bold; color: black;" "font-weight: bold; background-color: transparent;");
     ui->translateChinese->setStyleSheet("color: black;" "font-size: 16px;" "background:transparent;");
 
     QMovie *leftMovie = new QMovie(":/animations/gif_rabbit_tu.gif");
@@ -330,6 +331,7 @@ void MainWindow::switchToDog()
 
     ui->translateEnglish_3->setText("Dog Barks");
     ui->translateChinese_3->setText("狗在叫");
+    ui->translateEnglish_3->setStyleSheet("color: black;" "font-weight: bold; color: black;" "font-weight: bold; background-color: transparent;");
     ui->translateChinese_3->setStyleSheet("color: black;" "font-size: 16px;" "background:transparent;");
 
     QMovie *leftMovie = new QMovie(":/animations/gif_dog_gou.gif");
@@ -401,9 +403,8 @@ void MainWindow::switchToMonkey()
 
     ui->translateEnglish_2->setText("Monkey Swings");
     ui->translateChinese_2->setText("猴在荡");
-    ui->translateEnglish_2->setStyleSheet("color: white;");
+    ui->translateEnglish_2->setStyleSheet("color: white; font-weight: bold;");
     ui->translateChinese_2->setStyleSheet("color: white;" "font-size: 16px;" "background:transparent;");
-
 
     QMovie *leftMovie = new QMovie(":/animations/gif_monkey_hou.gif");
     ui->leftGifLabel_2->setScaledContents(true);
