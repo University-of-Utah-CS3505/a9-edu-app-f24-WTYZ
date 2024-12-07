@@ -1,7 +1,10 @@
 #include "rope.h"
 
-Rope::Rope(b2World *world, const b2Vec2 &anchorPosition, const std::vector<QPushButton *> &buttonSegments)
-    : world(world), buttonSegments(buttonSegments)
+Rope::Rope(b2World *world,
+           const b2Vec2 &anchorPosition,
+           const std::vector<QPushButton *> &buttonSegments)
+    : world(world)
+    , buttonSegments(buttonSegments)
 {
     if (buttonSegments.empty()) {
         qDebug() << "Error: No buttons provided for the rope.";
@@ -59,7 +62,6 @@ Rope::Rope(b2World *world, const b2Vec2 &anchorPosition, const std::vector<QPush
     world->CreateJoint(&anchorJointDef);
 
     qDebug() << "Rope initialized with" << ropeSegments.size() << "segments.";
-
 }
 
 Rope::~Rope()
@@ -67,7 +69,7 @@ Rope::~Rope()
     if (joint) {
         world->DestroyJoint(joint);
     }
-    for (auto* segment : ropeSegments) {
+    for (auto *segment : ropeSegments) {
         if (segment) {
             world->DestroyBody(segment);
         }
@@ -75,12 +77,13 @@ Rope::~Rope()
     qDebug() << "Rope destroyed.";
 }
 
-bool Rope::eventFilter(QObject* obj, QEvent* event) {
+bool Rope::eventFilter(QObject *obj, QEvent *event)
+{
     if (obj == button) {
         qDebug() << "Event received for Rope button:" << event->type();
 
         if (event->type() == QEvent::MouseButtonPress) {
-            QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+            QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
             if (mouseEvent->button() == Qt::LeftButton) {
                 isDragging = true;
                 dragStartPosition = mouseEvent->globalPos() - button->pos();
@@ -88,21 +91,20 @@ bool Rope::eventFilter(QObject* obj, QEvent* event) {
                 return true;
             }
         } else if (event->type() == QEvent::MouseMove && isDragging) {
-            QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+            QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
             QPoint newPos = mouseEvent->globalPos() - dragStartPosition;
 
-            int newX = button->x();  // Horizontal position stays constant
+            int newX = button->x(); // Horizontal position stays constant
 
             // Dynamically adjust maxY based on parent height
             int parentHeight = button->parentWidget()->height();
             int maxY = std::max(0, parentHeight - button->height());
-            maxY = std::max(0, maxY); // Ensure non-negative value for maxY
+            maxY = std::max(0, maxY);                   // Ensure non-negative value for maxY
             int newY = std::clamp(newPos.y(), 0, maxY); // Clamp Y position
 
             qDebug() << "Attempting to move Rope button to:" << newX << newY
                      << "Parent widget height:" << parentHeight
-                     << "Button height:" << button->height()
-                     << "Max Y:" << maxY;
+                     << "Button height:" << button->height() << "Max Y:" << maxY;
 
             button->move(newX, newY);
 
@@ -117,7 +119,8 @@ bool Rope::eventFilter(QObject* obj, QEvent* event) {
     return QObject::eventFilter(obj, event);
 }
 
-void Rope::attachMonkey(b2Body *monkeyBody) {
+void Rope::attachMonkey(b2Body *monkeyBody)
+{
     if (!monkeyBody) {
         qDebug() << "Error: Monkey body is null.";
         return;
@@ -151,7 +154,8 @@ void Rope::attachMonkey(b2Body *monkeyBody) {
     }
 }
 
-void Rope::enableSwingingMotor() {
+void Rope::enableSwingingMotor()
+{
     if (ropeSegments.size() > 1) {
         b2RevoluteJointDef jointDef;
         jointDef.bodyA = ropeSegments[ropeSegments.size() - 2];
@@ -165,19 +169,23 @@ void Rope::enableSwingingMotor() {
     }
 }
 
-b2RevoluteJoint* Rope::getJoint()  {
-    return static_cast<b2RevoluteJoint*>(joint);
+b2RevoluteJoint *Rope::getJoint()
+{
+    return static_cast<b2RevoluteJoint *>(joint);
 }
 
-b2Body* Rope::getBottomSegment() const {
+b2Body *Rope::getBottomSegment() const
+{
     return ropeSegments.empty() ? nullptr : ropeSegments.back();
 }
 
-b2Body* Rope::getBody() const {
+b2Body *Rope::getBody() const
+{
     return anchorBody;
 }
 
-void Rope::updatePosition() {
+void Rope::updatePosition()
+{
     if (ropeSegments.size() != buttonSegments.size()) {
         qDebug() << "Mismatch between rope segments and button segments.";
         return;
@@ -198,6 +206,7 @@ void Rope::updatePosition() {
     }
 }
 
-bool Rope::isAttached() const {
+bool Rope::isAttached() const
+{
     return monkeyBody != nullptr;
 }

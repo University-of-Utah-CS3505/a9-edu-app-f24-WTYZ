@@ -3,7 +3,8 @@
 #include <QPainter>
 
 DrawingWidget::DrawingWidget(QWidget *parent)
-    : QWidget(parent), canvas(size())
+    : QWidget(parent)
+    , canvas(size())
 {
     canvas.fill(Qt::transparent);
 }

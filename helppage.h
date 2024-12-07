@@ -1,3 +1,12 @@
+/**
+ * Name: WYNTER KIM, TERESA PARK
+ * Course: CS 3505 Fall2024
+ * Assignment Name: A9: An Educational project
+ * Project name: Hanzi Party
+ * Descrption: Our game is an interactive learning experience designed to teach players Mandarin Chinese through engaging visuals and gameplay.
+ *
+ * Reviewer: ZHENGXI ZHANG, YINHAO CHEN
+ */
 #ifndef HELPPAGE_H
 #define HELPPAGE_H
 

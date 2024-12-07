@@ -1,3 +1,12 @@
+/**
+ * Name:YINHAO CHEN, ZHENGXI ZHANG
+ * Course: CS 3505 Fall2024
+ * Assignment Name: A9: An Educational project
+ * Project name: Hanzi Party
+ * Descrption: Our game is an interactive learning experience designed to teach players Mandarin Chinese through engaging visuals and gameplay.
+ *
+ * Reviewer: WYNTER KIM, TERESA PARK
+ */
 #ifndef MONKEY_H
 #define MONKEY_H
 
@@ -11,7 +20,7 @@ public:
     Monkey(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition, Rope *rope);
     ~Monkey() override;
 
-    void performAction() override; // Monkey swings
+    void performAction() override;  // Monkey swings
     void updatePosition() override; // Update the position of the monkey based on physics
     bool eventFilter(QObject *watched, QEvent *event) override;
     void updatePhysics() override; // Overrides the new method in Animal

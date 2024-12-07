@@ -1,3 +1,12 @@
+/**
+ * Name:YINHAO CHEN, ZHENGXI ZHANG
+ * Course: CS 3505 Fall2024
+ * Assignment Name: A9: An Educational project
+ * Project name: Hanzi Party
+ * Descrption: Our game is an interactive learning experience designed to teach players Mandarin Chinese through engaging visuals and gameplay.
+ *
+ * Reviewer: WYNTER KIM, TERESA PARK
+ */
 #ifndef DOG_H
 #define DOG_H
 
@@ -10,24 +19,31 @@
 
 class Dog : public Animal
 {
-    Q_OBJECT // Necessary for Qt-specific features
+    Q_OBJECT
 
 public:
     Dog(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition);
     ~Dog() override;
 
-    void performAction() override;  // Trigger barking animation
-    void updatePosition() override; // Update position like other animals
+    /**
+     * @brief performAction
+     * Dog animation: barking
+     */
+    void performAction() override;
+    void updatePosition() override;
 
 private slots:
-    void updateAnimationFrame(); // Slot to update barking animation frame
+    /**
+     * @brief updateAnimationFrame
+     */
+    void updateAnimationFrame();
 
 private:
     QTimer *animationTimer;               // Timer for animation
     QMediaPlayer *barkSound;              // Media player for MP3 sound
     QAudioOutput *barkOutput;             // Audio output for volume control
     std::vector<QPixmap> animationFrames; // Vector of barking frame image paths
-    int frameIndex;                       // Current frame index for the animation
+    int frameIndex;
 };
 
 #endif // DOG_H

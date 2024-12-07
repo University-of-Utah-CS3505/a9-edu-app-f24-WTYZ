@@ -3,7 +3,8 @@
 #include <QMouseEvent>
 
 Monkey::Monkey(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition, Rope *rope)
-    : Animal(uiButton, world, initialPosition),rope(rope)
+    : Animal(uiButton, world, initialPosition)
+    , rope(rope)
     , isDragging(false)
 {
     if (!world) {
@@ -44,7 +45,8 @@ void Monkey::performAction()
     qDebug() << "Monkey is performing an action!";
 }
 
-bool Monkey::eventFilter(QObject *watched, QEvent *event) {
+bool Monkey::eventFilter(QObject *watched, QEvent *event)
+{
     if (watched == button) {
         if (event->type() == QEvent::MouseButtonPress) {
             QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent *>(event);
@@ -136,7 +138,8 @@ void Monkey::updatePhysics()
     }
 }
 
-void Monkey::attachToRope(Rope *rope) {
+void Monkey::attachToRope(Rope *rope)
+{
     if (!rope) {
         qDebug() << "Error: Rope is null!";
         return;
@@ -157,7 +160,7 @@ void Monkey::attachToRope(Rope *rope) {
     // Create a RevoluteJoint to attach the monkey to the bottom of the rope
     b2RevoluteJointDef jointDef;
     jointDef.bodyA = ropeBottomSegment;
-    jointDef.bodyB = body; // Monkey's body
+    jointDef.bodyB = body;                  // Monkey's body
     jointDef.localAnchorA.Set(0.0f, -0.3f); // Offset for the bottom of the rope
     jointDef.localAnchorB.Set(0.0f, 0.5f);  // Offset for the monkey's body
     jointDef.collideConnected = false;      // Prevent self-collision
@@ -171,8 +174,10 @@ void Monkey::attachToRope(Rope *rope) {
     }
 }
 
-bool Monkey::isNearRope(Rope *rope) const {
-    if (!rope) return false;
+bool Monkey::isNearRope(Rope *rope) const
+{
+    if (!rope)
+        return false;
 
     b2Vec2 monkeyPos = body->GetPosition();
     b2Vec2 ropeBottomPos = rope->getBottomSegment()->GetPosition();

@@ -1,12 +1,20 @@
+/**
+ * Name: WYNTER KIM, TERESA PARK, YINHAO CHEN, ZHENGXI ZHANG
+ * Course: CS 3505 Fall2024
+ * Assignment Name: A9: An Educational project
+ * Project name: Hanzi Party
+ * Descrption: Our game is an interactive learning experience designed to teach players Mandarin Chinese through engaging visuals and gameplay.
+ *
+ * Reviewer: WYNTER KIM, TERESA PARK, ZHENGXI ZHANG
+ */
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QAudioOutput>
+#include <QGraphicsOpacityEffect>
 #include <QLabel>
 #include <QMainWindow>
 #include <QMediaPlayer>
-#include <QAudioOutput>
-#include <QGraphicsOpacityEffect>
 #include <QMovie>
 #include <QTimer>
 #include <Box2D/Box2D.h>

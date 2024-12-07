@@ -1,3 +1,12 @@
+/**
+ * Name:YINHAO CHEN, ZHENGXI ZHANG
+ * Course: CS 3505 Fall2024
+ * Assignment Name: A9: An Educational project
+ * Project name: Hanzi Party
+ * Descrption: Our game is an interactive learning experience designed to teach players Mandarin Chinese through engaging visuals and gameplay.
+ *
+ * Reviewer: WYNTER KIM, TERESA PARK
+ */
 #ifndef RABBIT_H
 #define RABBIT_H
 

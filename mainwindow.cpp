@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "rabbit.h" // Ensure Rabbit header is included for type safety
+#include "rabbit.h"
 #include "rope.h"
 #include "ui_mainwindow.h"
 
@@ -47,14 +47,12 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << "Forcing parent widget to be visible.";
     }
     // Pass the ropeButton to the Rope constructor
-    std::vector<QPushButton *> ropeButtons = {
-        ui->ropeButton,
-        ui->ropeButton_2,
-        ui->ropeButton_3,
-        ui->ropeButton_4,
-        ui->ropeButton_5,
-        ui->ropeButton_6
-    };
+    std::vector<QPushButton *> ropeButtons = {ui->ropeButton,
+                                              ui->ropeButton_2,
+                                              ui->ropeButton_3,
+                                              ui->ropeButton_4,
+                                              ui->ropeButton_5,
+                                              ui->ropeButton_6};
 
     // Validate that all buttons exist
     for (QPushButton *button : ropeButtons) {
@@ -95,8 +93,6 @@ void MainWindow::settingSounds()
     QAudioOutput *rabbitAudioOutput = new QAudioOutput(this);
     rabbitSound->setAudioOutput(rabbitAudioOutput);
     rabbitSound->setSource(QUrl("qrc:/sounds/rabbitJumps_tu_zai_tiao.m4a"));
-
-
 
     // Dog Sound Button
     ui->soundButton_3->setStyleSheet("border: none; background-color: transparent;");
@@ -153,8 +149,7 @@ void MainWindow::initializeAnimal(Animal *&animal, QPushButton *button, int laye
             monkey = new Monkey(button,
                                 world,
                                 b2Vec2(initialPos.x() / 50.0f,
-                                       (300 - initialPos.y()) / 50.0f
-                                           + 2.0f),
+                                       (300 - initialPos.y()) / 50.0f + 2.0f),
                                 rope); // Offset to avoid ground collision
             button->setMouseTracking(true);
             monkey->getButton()->setStyleSheet("background: transparent; border: none;");
@@ -188,7 +183,6 @@ void MainWindow::settingScreenUI()
                                  "border-radius: 25px;");
 }
 
-
 void MainWindow::connections()
 {
     // Connect to Help Page
@@ -204,20 +198,27 @@ void MainWindow::connections()
 
     // Connect Sounds
     connect(ui->soundButton, &QPushButton::clicked, this, [this]() {
-        if (rabbitSound) rabbitSound->play();});
+        if (rabbitSound)
+            rabbitSound->play();
+    });
     connect(ui->soundButton_3, &QPushButton::clicked, this, [this]() {
-        if (dogSound) dogSound->play();});
+        if (dogSound)
+            dogSound->play();
+    });
     connect(ui->soundButton_2, &QPushButton::clicked, this, [this]() {
-        if (monkeySound) monkeySound->play();});
+        if (monkeySound)
+            monkeySound->play();
+    });
     // Connect Erase Button
     connect(ui->clearButton_rabbit, &QPushButton::clicked, this, [this]() {
-        ui->drawingWidget_rabbit->clearDrawing();});
+        ui->drawingWidget_rabbit->clearDrawing();
+    });
     connect(ui->clearButton_monkey, &QPushButton::clicked, this, [this]() {
-        ui->drawingWidget_monkey->clearDrawing();});
+        ui->drawingWidget_monkey->clearDrawing();
+    });
     connect(ui->clearButton_dog, &QPushButton::clicked, this, [this]() {
-        ui->drawingWidget_dog->clearDrawing();});
-
-
+        ui->drawingWidget_dog->clearDrawing();
+    });
 }
 
 void MainWindow::updateWorld()
@@ -268,7 +269,6 @@ void MainWindow::enableAnimalDrawing(DrawingWidget *drawingWidget)
     drawingWidget->clearDrawing();
 }
 
-
 void MainWindow::switchToRabbit()
 {
     currentAnimal = rabbit;
@@ -285,8 +285,12 @@ void MainWindow::switchToRabbit()
 
     ui->translateEnglish->setText("Rabbit Jumps");
     ui->translateChinese->setText("兔在跳");
-    ui->translateEnglish->setStyleSheet("color: black;" "font-weight: bold; color: black;" "font-weight: bold; background-color: transparent;");
-    ui->translateChinese->setStyleSheet("color: black;" "font-size: 16px;" "background:transparent;");
+    ui->translateEnglish->setStyleSheet("color: black;"
+                                        "font-weight: bold; color: black;"
+                                        "font-weight: bold; background-color: transparent;");
+    ui->translateChinese->setStyleSheet("color: black;"
+                                        "font-size: 16px;"
+                                        "background:transparent;");
 
     QMovie *leftMovie = new QMovie(":/animations/gif_rabbit_tu.gif");
     ui->leftGifLabel->setScaledContents(true);
@@ -331,8 +335,12 @@ void MainWindow::switchToDog()
 
     ui->translateEnglish_3->setText("Dog Barks");
     ui->translateChinese_3->setText("狗在叫");
-    ui->translateEnglish_3->setStyleSheet("color: black;" "font-weight: bold; color: black;" "font-weight: bold; background-color: transparent;");
-    ui->translateChinese_3->setStyleSheet("color: black;" "font-size: 16px;" "background:transparent;");
+    ui->translateEnglish_3->setStyleSheet("color: black;"
+                                          "font-weight: bold; color: black;"
+                                          "font-weight: bold; background-color: transparent;");
+    ui->translateChinese_3->setStyleSheet("color: black;"
+                                          "font-size: 16px;"
+                                          "background:transparent;");
 
     QMovie *leftMovie = new QMovie(":/animations/gif_dog_gou.gif");
     ui->leftGifLabel_3->setScaledContents(true);
@@ -385,14 +393,12 @@ void MainWindow::switchToMonkey()
     }
 
     // Ensure the rope buttons are visible
-    std::vector<QPushButton *> ropeButtons = {
-        ui->ropeButton,
-        ui->ropeButton_2,
-        ui->ropeButton_3,
-        ui->ropeButton_4,
-        ui->ropeButton_5,
-        ui->ropeButton_6
-    };
+    std::vector<QPushButton *> ropeButtons = {ui->ropeButton,
+                                              ui->ropeButton_2,
+                                              ui->ropeButton_3,
+                                              ui->ropeButton_4,
+                                              ui->ropeButton_5,
+                                              ui->ropeButton_6};
 
     for (QPushButton *button : ropeButtons) {
         if (button) {
@@ -404,7 +410,9 @@ void MainWindow::switchToMonkey()
     ui->translateEnglish_2->setText("Monkey Swings");
     ui->translateChinese_2->setText("猴在荡");
     ui->translateEnglish_2->setStyleSheet("color: white; font-weight: bold;");
-    ui->translateChinese_2->setStyleSheet("color: white;" "font-size: 16px;" "background:transparent;");
+    ui->translateChinese_2->setStyleSheet("color: white;"
+                                          "font-size: 16px;"
+                                          "background:transparent;");
 
     QMovie *leftMovie = new QMovie(":/animations/gif_monkey_hou.gif");
     ui->leftGifLabel_2->setScaledContents(true);
@@ -427,7 +435,8 @@ void MainWindow::showHelpPage()
     helpPage.exec();
 }
 
-void MainWindow::updateGroundPosition(float yPosition, float width, float height) {
+void MainWindow::updateGroundPosition(float yPosition, float width, float height)
+{
     // Destroy the existing ground body
     if (groundBody) {
         world->DestroyBody(groundBody);
@@ -444,4 +453,3 @@ void MainWindow::updateGroundPosition(float yPosition, float width, float height
 
     qDebug() << "Ground updated to position:" << yPosition;
 }
-
