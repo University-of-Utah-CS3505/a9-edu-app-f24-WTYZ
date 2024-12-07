@@ -333,8 +333,8 @@ void MainWindow::switchToDog()
         qDebug() << "Dog object or button not initialized!";
     }
 
-    ui->translateEnglish_3->setText("Dog Runs");
-    ui->translateChinese_3->setText("狗在跑");
+    ui->translateEnglish_3->setText("Dog Barks");
+    ui->translateChinese_3->setText("狗在叫");
     ui->translateChinese_3->setStyleSheet("color: black;" "font-size: 16px;" "background:transparent;");
 
     QMovie *leftMovie = new QMovie(":/animations/gif_dog_gou.gif");

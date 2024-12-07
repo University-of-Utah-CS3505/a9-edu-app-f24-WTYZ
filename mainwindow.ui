@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="pageRabbit">
      <property name="sizePolicy">
@@ -981,7 +981,7 @@ color: rgb(60, 60, 60);</string>
        <string notr="true">background: transparent; color:black; font-size:12px;</string>
       </property>
       <property name="text">
-       <string>Runs</string>
+       <string>Barks</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_22">
