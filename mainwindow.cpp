@@ -53,7 +53,6 @@ MainWindow::MainWindow(QWidget *parent)
         ui->ropeButton_3,
         ui->ropeButton_4,
         ui->ropeButton_5,
-        ui->ropeButton_6
     };
 
     // Validate that all buttons exist
@@ -237,6 +236,7 @@ void MainWindow::switchToRabbit()
 {
     currentAnimal = rabbit;
     hideAllAnimals();
+    updateGroundPosition(-2.0f, 200.0f, 0.5f);
 
     ui->btnRabbit->setStyleSheet("background-color: #2685E4; border-radius: 25px;");
     ui->btnDog->setStyleSheet("background-color: white; border-radius: 25px;");
@@ -292,6 +292,7 @@ void MainWindow::switchToDog()
 {
     currentAnimal = dog;
     hideAllAnimals();
+    updateGroundPosition(-2.0f, 200.0f, 0.5f);
 
     ui->btnRabbit->setStyleSheet("background-color: white; border-radius: 25px;");
     ui->btnDog->setStyleSheet("background-color: #866839; border-radius: 25px;");
@@ -352,7 +353,6 @@ void MainWindow::switchToMonkey()
     hideAllAnimals();
     monkey->getButton()->show();
 
-    // Ensure the ground is properly updated for the monkey scene
     updateGroundPosition(-3.0f, 200.0f, 0.5f);
 
     // Update button styles to highlight the monkey selection
@@ -380,7 +380,6 @@ void MainWindow::switchToMonkey()
         ui->ropeButton_3,
         ui->ropeButton_4,
         ui->ropeButton_5,
-        ui->ropeButton_6
     };
 
     for (QPushButton *button : ropeButtons) {
