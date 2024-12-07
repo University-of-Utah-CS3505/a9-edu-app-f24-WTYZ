@@ -70,6 +70,8 @@ private:
     QMediaPlayer *rabbitSound = nullptr;    // Rabbit sound
     QMediaPlayer *dogSound = nullptr;       // Dog sound
     QMediaPlayer *monkeySound = nullptr;    // Monkey sound
+    void updateGroundPosition(float yPosition, float width, float height);
+
 };
 
 #endif // MAINWINDOW_H
