@@ -2,7 +2,10 @@
 #include <QDebug>
 
 Dog::Dog(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition)
-    : Animal(uiButton, world, initialPosition), animationTimer(nullptr), frameIndex(0) {
+    : Animal(uiButton, world, initialPosition)
+    , animationTimer(nullptr)
+    , frameIndex(0)
+{
     // Define Dog's physics body
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
@@ -33,7 +36,7 @@ Dog::Dog(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition)
     barkSound = new QMediaPlayer(this);
     barkOutput = new QAudioOutput(this);
     barkSound->setAudioOutput(barkOutput);
-    barkOutput->setVolume(0.5); // Volume percentage (0.0 to 1.0)
+    barkOutput->setVolume(0.5);                             // Volume percentage (0.0 to 1.0)
     barkSound->setSource(QUrl("qrc:/sounds/dog_bark.wav")); // Ensure this path is correct
 
     // Load animation frames
@@ -51,7 +54,8 @@ Dog::Dog(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition)
     qDebug() << "Dog initialized at position:" << initialPosition.x << initialPosition.y;
 }
 
-Dog::~Dog() {
+Dog::~Dog()
+{
     if (body && world) {
         world->DestroyBody(body);
     }
@@ -65,19 +69,21 @@ Dog::~Dog() {
     delete barkOutput;
 }
 
-void Dog::performAction() {
+void Dog::performAction()
+{
     if (animationFrames.empty()) {
         qDebug() << "No animation frames available for dog barking.";
         return;
     }
 
-    frameIndex = 0; // Reset the frame index
+    frameIndex = 0;             // Reset the frame index
     animationTimer->start(100); // Start animation timer (100 ms per frame)
-    barkSound->play(); // Play bark sound
+    barkSound->play();          // Play bark sound
     qDebug() << "Dog barking animation started.";
 }
 
-void Dog::updateAnimationFrame() {
+void Dog::updateAnimationFrame()
+{
     if (frameIndex < animationFrames.size() && button) {
         button->setIcon(QIcon(animationFrames[frameIndex]));
         button->setIconSize(button->size());
@@ -93,7 +99,7 @@ void Dog::updatePosition()
         b2Vec2 position = body->GetPosition();
 
         // Convert Box2D position to UI coordinates
-        float xPos = position.x * 50.0f; // Scale up for UI
+        float xPos = position.x * 50.0f;          // Scale up for UI
         float yPos = 300.0f - position.y * 50.0f; // Adjust for Y-axis inversion
 
         // Clamp to UI dimensions (consider button size)

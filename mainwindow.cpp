@@ -1,10 +1,10 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include "rabbit.h"  // Ensure Rabbit header is included for type safety
+#include "rabbit.h" // Ensure Rabbit header is included for type safety
 #include "rope.h"
-
+#include "ui_mainwindow.h"
 #include <QMouseEvent>
 #include <QDebug>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -38,56 +38,39 @@ MainWindow::MainWindow(QWidget *parent)
     connect(worldUpdateTimer, &QTimer::timeout, this, &MainWindow::updateWorld);
     worldUpdateTimer->start(16); // 60 FPS
 
-    // Initialize animals
-    initializeAnimal(reinterpret_cast<Animal*&>(rabbit), ui->rabbitButton, 0);
-    initializeAnimal(reinterpret_cast<Animal*&>(dog), ui->dogButton, 1);
-    initializeAnimal(reinterpret_cast<Animal*&>(monkey), ui->monkeyButton, 2);
-
-    // Default setup
-    hideAllAnimals();
-    switchToRabbit();
-
     // Ensure the parent widget (current stacked page) is visible
-    QWidget* parentWidget = ui->stackedWidgetBackground->currentWidget();
+    QWidget *parentWidget = ui->stackedWidgetBackground->currentWidget();
     if (!parentWidget->isVisible()) {
         parentWidget->show(); // Make sure the parent widget is visible
         qDebug() << "Forcing parent widget to be visible.";
     }
+    // Pass the ropeButton to the Rope constructor
+    std::vector<QPushButton *> ropeButtons = {
+        ui->ropeButton,
+        ui->ropeButton_2,
+        ui->ropeButton_3,
+        ui->ropeButton_4,
+        ui->ropeButton_5,
+    };
 
-    // Initialize the rope button and add it to the stacked widget
-    ropeButton = new QPushButton(parentWidget);
-    int parentHeight = ui->stackedWidgetBackground->currentWidget()->height();
-    int buttonHeight = std::min(600, parentHeight); // Ensure button height fits within parent widget
-    ropeButton->setGeometry(400, 0, 300, buttonHeight); // Adjust button geometry to 300 width
-    ropeButton->setStyleSheet("background: transparent; border: none;");
-    ropeButton->setEnabled(true);
-    ropeButton->setFocusPolicy(Qt::StrongFocus);
-    ropeButton->show();
-
-    // Scale and set the icon for ropeButton to 300x300
-    QPixmap pixmap(":/images/obj_rope.png");
-    if (!pixmap.isNull()) {
-        QSize targetSize(300, 300); // Explicitly set icon size to 300x300
-        QPixmap scaledPixmap = pixmap.scaled(
-            targetSize,
-            Qt::KeepAspectRatio,
-            Qt::SmoothTransformation // Smooth scaling
-            );
-        ropeButton->setIcon(QIcon(scaledPixmap));
-        ropeButton->setIconSize(targetSize); // Apply the fixed 300x300 size
-        qDebug() << "Icon scaled to size 300x300 and applied to ropeButton.";
-    } else {
-        qDebug() << "Error: Failed to load obj_rope.png.";
+    // Validate that all buttons exist
+    for (QPushButton *button : ropeButtons) {
+        if (!button) {
+            qDebug() << "Error: Missing QPushButton for rope.";
+            return;
+        }
     }
 
-    qDebug() << "Parent widget geometry:" << parentWidget->geometry()
-             << "Visible:" << parentWidget->isVisible();
-    qDebug() << "Rope button initialized with geometry:" << ropeButton->geometry()
-             << "Visible:" << ropeButton->isVisible();
+    // Initialize the rope
+    b2Vec2 anchorPosition(4.0f, 6.0f); // Adjust as needed for your setup
+    rope = new Rope(world, anchorPosition, ropeButtons);
 
-    // Pass the ropeButton to the Rope constructor
-    rope = new Rope(world, b2Vec2(8.0f, 10.0f), ropeButton);
-
+    // Initialize animals
+    initializeAnimal(reinterpret_cast<Animal *&>(rabbit), ui->rabbitButton, 0);
+    initializeAnimal(reinterpret_cast<Animal *&>(dog), ui->dogButton, 1);
+    initializeAnimal(reinterpret_cast<Animal *&>(monkey), ui->monkeyButton, 2);
+    hideAllAnimals();
+    switchToRabbit();
 }
 
 MainWindow::~MainWindow()
@@ -161,7 +144,6 @@ void MainWindow::settingSounds()
     QAudioOutput *monkeyAudioOutput = new QAudioOutput(this);
     monkeySound->setAudioOutput(monkeyAudioOutput);
     monkeySound->setSource(QUrl("qrc:/sounds/monkeySwings_hou_zai_dang.m4a"));
-
 }
 
 void MainWindow::initializeAnimal(Animal *&animal, QPushButton *button, int layerIndex)
@@ -172,14 +154,14 @@ void MainWindow::initializeAnimal(Animal *&animal, QPushButton *button, int laye
         QPointF initialPos = geometry.center();
 
         // Map button position to Box2D world coordinates
-        float initialX = initialPos.x() / 50.0f;  // Scale down for Box2D
+        float initialX = initialPos.x() / 50.0f; // Scale down for Box2D
         float initialY = (300 - initialPos.y()) / 50.0f;
 
         if (layerIndex == 0) { // Rabbit
             rabbit = new Rabbit(button, world, b2Vec2(initialX, initialY));
             rabbit->getButton()->setStyleSheet("background: transparent; border: none;");
-        } else if (layerIndex == 1) { // Dog
-            float initialX = initialPos.x() / 50.0f;  // Scale down for Box2D
+        } else if (layerIndex == 1) {                        // Dog
+            float initialX = initialPos.x() / 50.0f;         // Scale down for Box2D
             float initialY = (300 - initialPos.y()) / 50.0f; // Map UI Y to Box2D Y
 
             // Log for debugging
@@ -195,9 +177,14 @@ void MainWindow::initializeAnimal(Animal *&animal, QPushButton *button, int laye
             qDebug() << "Dog Button Initial UI position:" << uiX << uiY;
 
             button->setParent(ui->stackedWidgetBackground->widget(layerIndex));
-            button->hide(); // Initially hidden
+            button->hide();           // Initially hidden
         } else if (layerIndex == 2) { // Monkey
-            monkey = new Monkey(button, world, b2Vec2(initialPos.x() / 50.0f, (300 - initialPos.y()) / 50.0f + 2.0f)); // Offset to avoid ground collision
+            monkey = new Monkey(button,
+                                world,
+                                b2Vec2(initialPos.x() / 50.0f,
+                                       (300 - initialPos.y()) / 50.0f
+                                           + 2.0f),
+                                rope); // Offset to avoid ground collision
             button->setMouseTracking(true);
             monkey->getButton()->setStyleSheet("background: transparent; border: none;");
             qDebug() << "Monkey initialized at position:" << initialX << initialY + 2.0f;
@@ -259,11 +246,10 @@ void MainWindow::connections()
         ui->drawingWidget_monkey->clearDrawing();});
     connect(ui->clearButton_dog, &QPushButton::clicked, this, [this]() {
         ui->drawingWidget_dog->clearDrawing();});
-
-
 }
 
-void MainWindow::updateWorld() {
+void MainWindow::updateWorld()
+{
     float32 timeStep = 1.0f / 60.0f;
     int32 velocityIterations = 6;
     int32 positionIterations = 2;
@@ -271,8 +257,8 @@ void MainWindow::updateWorld() {
     if (world) {
         world->Step(timeStep, velocityIterations, positionIterations);
 
-        if (monkey && rope && monkey->overlapsWithRope(rope)) {
-            rope->attachMonkey(monkey->getBody());
+        if (rope) {
+            rope->updatePosition();
         }
         if (currentAnimal) {
             currentAnimal->updatePhysics();
@@ -285,6 +271,7 @@ void MainWindow::switchToRabbit()
 {
     currentAnimal = rabbit;
     hideAllAnimals();
+    updateGroundPosition(-2.0f, 200.0f, 0.5f);
 
     ui->btnRabbit->setStyleSheet("background-color: #2685E4; border-radius: 25px;");
     ui->btnDog->setStyleSheet("background-color: white; border-radius: 25px;");
@@ -329,6 +316,7 @@ void MainWindow::switchToDog()
 {
     currentAnimal = dog;
     hideAllAnimals();
+    updateGroundPosition(-2.0f, 200.0f, 0.5f);
 
     ui->btnRabbit->setStyleSheet("background-color: white; border-radius: 25px;");
     ui->btnDog->setStyleSheet("background-color: #866839; border-radius: 25px;");
@@ -372,38 +360,37 @@ void MainWindow::handleDogClick()
     }
 }
 
-
-void MainWindow::switchToMonkey() {
+void MainWindow::switchToMonkey()
+{
     currentAnimal = monkey;
     hideAllAnimals();
+    monkey->getButton()->show();
 
+    updateGroundPosition(-3.0f, 200.0f, 0.5f);
+
+    // Update button styles to highlight the monkey selection
     ui->btnRabbit->setStyleSheet("background-color: white; border-radius: 25px;");
     ui->btnDog->setStyleSheet("background-color: white; border-radius: 25px;");
     ui->btnMonkey->setStyleSheet("background-color: #25CE45; border-radius: 25px;");
     ui->stackedWidgetBackground->setCurrentIndex(2);
 
-    QWidget* monkeyPage = ui->stackedWidgetBackground->currentWidget();
+    // Show the monkey's page
+    QWidget *monkeyPage = ui->stackedWidgetBackground->currentWidget();
     if (!monkeyPage->isVisible()) {
         monkeyPage->show();
         qDebug() << "Monkey page forced to visible.";
-    }
-
-    if (ropeButton) {
-        ropeButton->setParent(monkeyPage);
-        ropeButton->show();
-        qDebug() << "Rope button shown on monkey page. Geometry:" << ropeButton->geometry();
     }
 
     if (monkey && monkey->getButton()) {
         monkey->getButton()->show();
         qDebug() << "Monkey button shown at:" << monkey->getButton()->geometry();
     }
-
     ui->translateEnglish_2->setText("Monkey Swings");
     ui->translateChinese_2->setText("猴荡");
     ui->translateEnglish_2->setStyleSheet("color: white;");
-    ui->translateChinese_2->setStyleSheet("color: white;" "font-size: 16px;" "background:transparent;");
-
+    ui->translateChinese_2->setStyleSheet("color: white;"
+                                          "font-size: 16px;"
+                                          "background:transparent;");
 
     QMovie *leftMovie = new QMovie(":/animations/gif_monkey_hou.gif");
     ui->leftGifLabel_2->setScaledContents(true);
@@ -439,3 +426,22 @@ void MainWindow::showHelpPage()
     HelpPage helpPage(this);
     helpPage.exec();
 }
+
+void MainWindow::updateGroundPosition(float yPosition, float width, float height) {
+    // Destroy the existing ground body
+    if (groundBody) {
+        world->DestroyBody(groundBody);
+    }
+
+    // Create a new ground body with the specified position and dimensions
+    b2BodyDef groundBodyDef;
+    groundBodyDef.position.Set(0.0f, yPosition); // Update ground position
+    groundBody = world->CreateBody(&groundBodyDef);
+
+    b2PolygonShape groundBox;
+    groundBox.SetAsBox(width, height); // Update ground dimensions
+    groundBody->CreateFixture(&groundBox, 0.0f);
+
+    qDebug() << "Ground updated to position:" << yPosition;
+}
+

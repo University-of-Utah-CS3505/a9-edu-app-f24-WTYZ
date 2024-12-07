@@ -1,4 +1,6 @@
-#include "drawingwidget.h"
+#include "DrawingWidget.h"
+#include <QMouseEvent>
+#include <QPainter>
 
 DrawingWidget::DrawingWidget(QWidget *parent)
     : QWidget(parent), canvas(size())
