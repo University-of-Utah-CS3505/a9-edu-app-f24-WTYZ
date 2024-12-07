@@ -18,13 +18,16 @@
 #include <QMovie>
 #include <QTimer>
 #include <Box2D/Box2D.h>
-
 #include "dog.h"
 #include "drawingwidget.h"
 #include "helppage.h"
 #include "monkey.h"
 #include "rabbit.h"
 #include "rope.h"
+#include "ui_mainwindow.h"
+#include <QDebug>
+#include <QMouseEvent>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -43,16 +46,39 @@ public:
     void connections();
     void settingScreenUI();
     void settingSounds();
+    /**
+     * @brief initializeAnimal
+     * Set up the Animal (Which are QPushButton)
+     * @param animal
+     * @param button
+     * @param layerIndex
+     */
     void initializeAnimal(Animal *&animal, QPushButton *button, int layerIndex);
-
+    /**
+     * @brief playDrawingBoxGif
+     * Play the stroke gif
+     * @param gifLabel
+     * @param gifPath
+     */
     void playDrawingBoxGif(QLabel *gifLabel, const QString &gifPath);
+    /**
+     * @brief enableAnimalDrawing
+     * Allow user draw the Hanzi
+     * @param drawingWidget
+     */
     void enableAnimalDrawing(DrawingWidget *drawingWidget);
 
 private slots:
+    /**
+     * @brief updateWorld
+     * Just update the Box2d world with animation
+     */
     void updateWorld();
+    // Three methods for switching scene
     void switchToRabbit();
     void switchToMonkey();
     void switchToDog();
+
     void showHelpPage();
     void handleRabbitClick();
     void handleDogClick();
@@ -60,21 +86,26 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    b2World *world = nullptr;           // Box2D world
+    b2World *world = nullptr;
     QTimer *worldUpdateTimer = nullptr; // Global physics timer
-
     b2Body *groundBody = nullptr;
     Animal *currentAnimal = nullptr;
-
-    Rabbit *rabbit = nullptr; // Rabbit object
-    Dog *dog = nullptr;       // Dog object
-    Monkey *monkey = nullptr; // Monkey object
+    Rabbit *rabbit = nullptr;
+    Dog *dog = nullptr;
+    Monkey *monkey = nullptr;
     Rope *rope;
     QPushButton *ropeButton;
 
     QMediaPlayer *rabbitSound = nullptr; // Rabbit sound
     QMediaPlayer *dogSound = nullptr;    // Dog sound
     QMediaPlayer *monkeySound = nullptr; // Monkey sound
+    /**
+     * @brief updateGroundPosition
+     * Private method to help update the ground position for different scene
+     * @param yPosition
+     * @param width
+     * @param height
+     */
     void updateGroundPosition(float yPosition, float width, float height);
 };
 

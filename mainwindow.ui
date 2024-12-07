@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="pageRabbit">
      <property name="sizePolicy">
@@ -1620,7 +1620,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
        <string notr="true">background: transparent; color:black; font-size:12px;</string>
       </property>
       <property name="text">
-       <string>Swing</string>
+       <string>Swings</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_21">
@@ -1845,7 +1845,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <x>0</x>
      <y>0</y>
      <width>801</width>
-     <height>33</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGame">

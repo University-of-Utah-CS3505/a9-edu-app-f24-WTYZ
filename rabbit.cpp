@@ -1,5 +1,13 @@
+/**
+ * Name:YINHAO CHEN, ZHENGXI ZHANG
+ * Course: CS 3505 Fall2024
+ * Assignment Name: A9: An Educational project
+ * Project name: Hanzi Party
+ * Descrption: Our game is an interactive learning experience designed to teach players Mandarin Chinese through engaging visuals and gameplay.
+ *
+ * Reviewer: ZHENGXI ZHANG, YINHAO CHEN
+ */
 #include "rabbit.h"
-#include <QDebug>
 
 Rabbit::Rabbit(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition)
     : Animal(uiButton, world, initialPosition)
@@ -12,11 +20,11 @@ Rabbit::Rabbit(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosit
     body = world->CreateBody(&bodyDef);
 
     b2PolygonShape boxShape;
-    boxShape.SetAsBox(1.0f, 1.0f); // Rabbit's physical size
+    boxShape.SetAsBox(1.0f, 1.0f);
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &boxShape;
-    fixtureDef.density = 1.0f;  // Set density for proper physics
-    fixtureDef.friction = 0.3f; // Add friction to avoid sliding
+    fixtureDef.density = 1.0f;
+    fixtureDef.friction = 0.3f;
     body->CreateFixture(&fixtureDef);
 
     qDebug() << "Rabbit initialized at position:" << initialPosition.x << initialPosition.y;
@@ -38,7 +46,7 @@ void Rabbit::performAction()
 void Rabbit::jump()
 {
     if (body) {
-        b2Vec2 impulse(-2.5f, 20.0f);                                    // Upward force
+        b2Vec2 impulse(-2.5f, 20.0f);
         body->ApplyLinearImpulse(impulse, body->GetWorldCenter(), true); // Apply impulse for jump
     }
 }
@@ -50,10 +58,10 @@ void Rabbit::updatePosition()
 
         // Clamp position to prevent rabbit from going out of bounds
         float clampedX = std::max(0.0f,
-                                  std::min(position.x * 50.0f, 800.0f)); // Assuming width = 800
+                                  std::min(position.x * 50.0f, 800.0f));
         float clampedY = std::max(0.0f,
                                   std::min(300.0f - position.y * 50.0f,
-                                           600.0f)); // Assuming height = 600
+                                           600.0f));
 
         button->move(clampedX, clampedY);
     }
@@ -61,5 +69,5 @@ void Rabbit::updatePosition()
 
 void Rabbit::updatePhysics()
 {
-    // Add any additional physics-specific logic for rabbit here if needed
+    //rabbits no need addition physics
 }

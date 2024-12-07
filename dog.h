@@ -16,6 +16,7 @@
 #include <QTimer>
 #include "animal.h"
 #include <vector>
+#include <QDebug>
 
 class Dog : public Animal
 {

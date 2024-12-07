@@ -1,3 +1,12 @@
+/**
+ * Name: WYNTER KIM, TERESA PARK, YINHAO CHEN, ZHENGXI ZHANG
+ * Course: CS 3505 Fall2024
+ * Assignment Name: A9: An Educational project
+ * Project name: Hanzi Party
+ * Descrption: Our game is an interactive learning experience designed to teach players Mandarin Chinese through engaging visuals and gameplay.
+ *
+ * Reviewer: WYNTER KIM, TERESA PARK
+ */
 #include "animal.h"
 
 Animal::Animal(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosition)
@@ -23,7 +32,7 @@ Animal::Animal(QPushButton *uiButton, b2World *world, const b2Vec2 &initialPosit
 Animal::~Animal()
 {
     if (body && world) {
-        world->DestroyBody(body); // Clean up the Box2D body
+        world->DestroyBody(body);
     }
 }
 
@@ -31,7 +40,7 @@ void Animal::updatePosition()
 {
     if (body) {
         b2Vec2 position = body->GetPosition();
-        button->move(position.x * 50, 300 - position.y * 50); // Adjust scaling and Y-axis inversion
+        button->move(position.x * 50, 300 - position.y * 50);
     }
 }
 
