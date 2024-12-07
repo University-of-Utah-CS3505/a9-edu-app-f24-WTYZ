@@ -5,6 +5,8 @@
 #include <QLabel>
 #include <QMainWindow>
 #include <QMediaPlayer>
+#include <QAudioOutput>
+#include <QGraphicsOpacityEffect>
 #include <QMovie>
 #include <QTimer>
 #include <Box2D/Box2D.h>
@@ -34,6 +36,9 @@ public:
     void settingScreenUI();
     void settingSounds();
     void initializeAnimal(Animal *&animal, QPushButton *button, int layerIndex);
+
+    void playAnimalGifOnce(QLabel *gifLabel, const QString &gifPath, int time);
+    void enableAnimalDrawing(DrawingWidget *drawingWidget);
 
 private slots:
     void updateWorld();

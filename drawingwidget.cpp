@@ -3,60 +3,49 @@
 #include <QPainter>
 
 DrawingWidget::DrawingWidget(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent), canvas(size())
 {
-    setAttribute(Qt::WA_StaticContents);
-    setAttribute(Qt::WA_TransparentForMouseEvents, false);
+    canvas.fill(Qt::transparent);
 }
 
-void DrawingWidget::clearCanvas()
+void DrawingWidget::clearDrawing()
 {
-    strokes.clear();
-    currentStroke.clear();
+    canvas.fill(Qt::transparent);
     update();
-}
-
-void DrawingWidget::paintEvent(QPaintEvent *event)
-{
-    Q_UNUSED(event);
-
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing, true);
-
-    QPen pen(Qt::black, 4, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
-    painter.setPen(pen);
-
-    for (const auto &stroke : strokes) {
-        for (int i = 1; i < stroke.size(); ++i) {
-            painter.drawLine(stroke[i - 1], stroke[i]);
-        }
-    }
-
-    for (int i = 1; i < currentStroke.size(); ++i) {
-        painter.drawLine(currentStroke[i - 1], currentStroke[i]);
-    }
 }
 
 void DrawingWidget::mousePressEvent(QMouseEvent *event)
 {
-    currentStroke.clear();
-    currentStroke.append(event->pos());
-    update();
+    if (event->button() == Qt::LeftButton) {
+        lastPoint = event->pos();
+    }
 }
 
 void DrawingWidget::mouseMoveEvent(QMouseEvent *event)
 {
-    if (!currentStroke.isEmpty()) {
-        currentStroke.append(event->pos());
+    if (event->buttons() & Qt::LeftButton) {
+        QPainter painter(&canvas);
+        painter.setPen(QPen(Qt::black, 6, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+        painter.drawLine(lastPoint, event->pos());
+        lastPoint = event->pos();
         update();
     }
 }
 
-void DrawingWidget::mouseReleaseEvent(QMouseEvent *event)
+void DrawingWidget::paintEvent(QPaintEvent *event)
 {
-    if (!currentStroke.isEmpty()) {
-        strokes.append(currentStroke);
-        currentStroke.clear();
-        update();
-    }
+    QPainter painter(this);
+    painter.drawPixmap(0, 0, canvas);
+}
+
+void DrawingWidget::resizeEvent(QResizeEvent *event)
+{
+    QPixmap newCanvas(size());
+    newCanvas.fill(Qt::transparent);
+
+    QPainter painter(&newCanvas);
+    painter.drawPixmap(0, 0, canvas);
+    canvas = newCanvas;
+
+    QWidget::resizeEvent(event);
 }

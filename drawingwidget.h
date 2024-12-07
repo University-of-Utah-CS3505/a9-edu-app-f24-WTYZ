@@ -1,9 +1,9 @@
 #ifndef DRAWINGWIDGET_H
 #define DRAWINGWIDGET_H
 
-#include <QPoint>
-#include <QVector>
 #include <QWidget>
+#include <QMouseEvent>
+#include <QPainter>
 
 class DrawingWidget : public QWidget
 {
@@ -11,18 +11,16 @@ class DrawingWidget : public QWidget
 
 public:
     explicit DrawingWidget(QWidget *parent = nullptr);
-
-    void clearCanvas(); // 캔버스 지우기
+    void clearDrawing();
 
 protected:
-    void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *event) override;
-
+    void paintEvent(QPaintEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override;
 private:
-    QVector<QPoint> currentStroke;    // 현재 획 저장
-    QVector<QVector<QPoint>> strokes; // 모든 획 저장
+    QPixmap canvas;
+    QPoint lastPoint;
 };
 
 #endif // DRAWINGWIDGET_H
