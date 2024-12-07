@@ -7,12 +7,12 @@
         <file>btn_tutorial.png</file>
         <file>strokeGuideBox.png</file>
         <file>labelContainer.png</file>
-        <file>helpDescription.png</file>
         <file>frame_002.png</file>
         <file>frame_003.png</file>
         <file>frame_004.png</file>
         <file>frame_005.png</file>
         <file>obj_rope.png</file>
+        <file>helpDescription.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>dogBark.mp3</file>

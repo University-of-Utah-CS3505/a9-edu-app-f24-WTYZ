@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="pageRabbit">
      <property name="sizePolicy">
@@ -936,7 +936,7 @@ color: rgb(60, 60, 60);</string>
        <string>  gǒu </string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="pinyin_pao">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -1478,9 +1478,9 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <widget class="DrawingWidget" name="drawingWidget_monkey" native="true">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>260</x>
         <y>80</y>
-        <width>321</width>
+        <width>311</width>
         <height>141</height>
        </rect>
       </property>
@@ -1488,7 +1488,7 @@ background-color: rgba(255, 255, 255, 0.3);</string>
      <widget class="QPushButton" name="clearButton_monkey">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>260</x>
         <y>230</y>
         <width>311</width>
         <height>31</height>
