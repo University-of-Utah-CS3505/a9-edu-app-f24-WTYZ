@@ -25,9 +25,9 @@
         <file>gif_dog_gou.gif</file>
         <file>gif_monkey_hou.gif</file>
         <file>gif_rabbit_tu.gif</file>
-        <file>gif_run_pao.gif</file>
         <file>gif_run_tiao.gif</file>
         <file>gif_swing_dang.gif</file>
+        <file>gif_bark_jiao.gif</file>
     </qresource>
     <qresource prefix="/background">
         <file>bg_dog.png</file>

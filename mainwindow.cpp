@@ -339,13 +339,13 @@ void MainWindow::switchToDog()
     ui->leftGifLabel_3->setMovie(leftMovie);
     leftMovie->start();
 
-    QMovie *rightMovie = new QMovie(":/animations/gif_run_pao.gif");
+    QMovie *rightMovie = new QMovie(":/animations/gif_bark_jiao.gif");
     ui->rightGifLabel_3->setScaledContents(true);
     ui->rightGifLabel_3->setMovie(rightMovie);
     rightMovie->start();
 
     //Main Containter Gif & User Input Drawing
-    playDrawingBoxGif(ui->gifContainerRight_dog, ":/animations/gif_run_pao.gif");
+    playDrawingBoxGif(ui->gifContainerRight_dog, ":/animations/gif_bark_jiao.gif");
     playDrawingBoxGif(ui->gifContainerLeft_dog, ":/animations/gif_dog_gou.gif");
     enableAnimalDrawing(ui->drawingWidget_dog);
 }
