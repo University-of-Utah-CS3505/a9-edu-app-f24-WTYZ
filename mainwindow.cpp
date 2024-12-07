@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     // Initialize Box2D world
     qDebug() << "Creating Box2D world...";
     b2Vec2 gravity(0.0f, -9.8f);
